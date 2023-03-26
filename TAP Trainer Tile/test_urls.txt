@@ -1,0 +1,3 @@
+https://asolutionscorpdemo3.service-now.com/$sp.do?id=sp-preview&sys_id=fb3126d8dbf9e9107758240a13961991
+https://asolutionscorpdemo3.service-now.com/sp_config?id=tap_trainer_tile
+https://asolutionscorpdemo3.service-now.com/sp?id=tap_trainer_tile
