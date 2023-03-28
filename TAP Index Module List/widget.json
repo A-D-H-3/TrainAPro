@@ -2,7 +2,7 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "a488dd211b7d6d101ddefc851a4bcba93e2d192ab8c64ebce71bf3da2a5b10994efb2103"
+        "g_ck": "0b84bb0a1bb9ed101ddefc851a4bcbc85169992700f9435cceea018a19c795a0b9964e2c"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
@@ -171,7 +171,7 @@
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function () {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\tdata.moduleList = [];\n\n\tif (input && input.action === \"loadClass\") {\n\t\tmoduleList(input.sys_id);\n\t}\n\n\tfunction moduleList(classID) {\n\t\tvar moduleInstGR = new GlideRecordSecure(\"x_adsr_tap_m2m_module_instance\");\n\t\tmoduleInstGR.addQuery(\"x_adsr_tap_class\", classID);\n\t\tmoduleInstGR.query();\n\t\twhile (moduleInstGR.next()) {\n\t\t\tvar moduleObj = {\n\t\t\t\tmod_sys_id: moduleInstGR.getDisplayValue(\"sys_id\"),\n\t\t\t\tname: moduleInstGR.getDisplayValue(\"x_adsr_tap_module\"),\n\t\t\t};\n\t\t\tdata.moduleList.push(moduleObj);\n\n\t\t}\n\t}\n})();\n",
+            "value": "(function () {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\tdata.moduleList = [];\n\n\tif (input && input.action === \"loadClass\") {\n\t\tmoduleList(input.sys_id);\n\t}\n\n\tfunction moduleList(classID) {\n\t\tvar moduleInstGR = new GlideRecordSecure(\"x_adsr_tap_m2m_module_instance\");\n\t\tmoduleInstGR.addQuery(\"x_adsr_tap_class\", classID);\n\t\tmoduleInstGR.query();\n\t\twhile (moduleInstGR.next()) {\n\t\t\tvar moduleObj = {\n\t\t\t\tmod_sys_id_inst: moduleInstGR.getDisplayValue(\"sys_id\"),\n\t\t\t\tname: moduleInstGR.getDisplayValue(\"x_adsr_tap_module\"),\n\t\t\t\tmod_sys_id: moduleInstGR.x_adsr_tap_module.toString(),\n\t\t\t};\n\t\t\tdata.moduleList.push(moduleObj);\n\t\t}\n\t}\n})();\n",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($rootScope, $scope) {\n\t/* widget controller */\n\tvar c = this;\n\n\t$scope.selectedModule = function(modID){\n\t\tconsole.log(modID)\n\t\tmoduleBroadcast(modID);\n\t}\n\n\n\t$rootScope.$on(\"currentClass\", function (event, args) {\n\t\tloadClass(args.sys_id, args.modifiable);\n\n\n\t});\n\n\tfunction loadClass(id, modifiable) {\n\t\tc.data.sys_id = id;\n\t\tc.data.modifiable = modifiable;\n\t\tc.data.action = \"loadClass\";\n\t\tc.server.update().then(function () {\n\t\t\tc.data.action = undefined;\n\t\t\t$scope.selectedModule(c.data.moduleList[0].mod_sys_id);\n\t\t});\n\t}\n\n\tfunction moduleBroadcast(modID) {\n\n\t\tconsole.log(\"This is the client :\" + \" \" + modID);\n\n\t}\n};\n",
+            "displayValue": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $scope.selectedModule = function (modID) {\n    moduleBroadcast(modID);\n  };\n\n  $rootScope.$on(\"currentClass\", function (event, args) {\n    loadClass(args.sys_id, args.modifiable);\n  });\n\n  function loadClass(id, modifiable) {\n    c.data.sys_id = id;\n    c.data.modifiable = modifiable;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n      $scope.selectedModule(c.data.moduleList[0].mod_sys_id);\n    });\n  }\n\n  function moduleBroadcast(modID) {\n    $rootScope.$broadcast(\"selectedModule\", {\n      mod_sys_id: modID,\n    });\n    console.log(\"This is the client :\" + \" \" + modID);\n  }\n};\n",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($rootScope, $scope) {\n\t/* widget controller */\n\tvar c = this;\n\n\t$scope.selectedModule = function(modID){\n\t\tconsole.log(modID)\n\t\tmoduleBroadcast(modID);\n\t}\n\n\n\t$rootScope.$on(\"currentClass\", function (event, args) {\n\t\tloadClass(args.sys_id, args.modifiable);\n\n\n\t});\n\n\tfunction loadClass(id, modifiable) {\n\t\tc.data.sys_id = id;\n\t\tc.data.modifiable = modifiable;\n\t\tc.data.action = \"loadClass\";\n\t\tc.server.update().then(function () {\n\t\t\tc.data.action = undefined;\n\t\t\t$scope.selectedModule(c.data.moduleList[0].mod_sys_id);\n\t\t});\n\t}\n\n\tfunction moduleBroadcast(modID) {\n\n\t\tconsole.log(\"This is the client :\" + \" \" + modID);\n\n\t}\n};\n",
+            "value": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $scope.selectedModule = function (modID) {\n    moduleBroadcast(modID);\n  };\n\n  $rootScope.$on(\"currentClass\", function (event, args) {\n    loadClass(args.sys_id, args.modifiable);\n  });\n\n  function loadClass(id, modifiable) {\n    c.data.sys_id = id;\n    c.data.modifiable = modifiable;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n      $scope.selectedModule(c.data.moduleList[0].mod_sys_id);\n    });\n  }\n\n  function moduleBroadcast(modID) {\n    $rootScope.$broadcast(\"selectedModule\", {\n      mod_sys_id: modID,\t\t\n    });\n  }\n};\n",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"

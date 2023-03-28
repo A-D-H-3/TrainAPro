@@ -22,8 +22,7 @@ api.controller = function ($rootScope, $scope) {
 
   function moduleBroadcast(modID) {
     $rootScope.$broadcast("selectedModule", {
-      mod_sys_id: modID,
+      mod_sys_id: modID,		
     });
-    console.log("This is the client :" + " " + modID);
   }
 };

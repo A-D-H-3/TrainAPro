@@ -2,7 +2,7 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "9fa3081d1b7d2d101ddefc851a4bcbc95c5cd22907968f5dc67f9aa5379c3873ab0889df"
+        "g_ck": "a89624a21b3921501ddefc851a4bcbc0f1e897170a466c446a85d6487e656afe1f75d0d2"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "<div>\n  <!-- your widget template -->\n  <div class=\"panel panel-default\">\n    <!-- Default panel contents -->\n    <div class=\"panel-heading\">Panel heading</div>\n    <div class=\"panel-body\">\n      <p>...</p>\n    </div>\n\n    <!-- List group -->\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\" ng-repeat=\"story in c.data.storyList\">{{story.name}}</li>\n    </ul>\n  </div>\n</div>",
+            "displayValue": "<div>\n  <!-- your widget template -->\n  <div class=\"panel panel-default\">\n    <!-- Default panel contents -->\n    <div class=\"panel-heading\">Module Stories:</div>\n    <!-- <div class=\"panel-body\">\n    </div> -->\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\" ng-repeat=\"story in c.data.storyList\">{{story.name}}</li>\n    </ul>\n  </div>\n</div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "<div>\n  <!-- your widget template -->\n  <div class=\"panel panel-default\">\n    <!-- Default panel contents -->\n    <div class=\"panel-heading\">Panel heading</div>\n    <div class=\"panel-body\">\n      <p>...</p>\n    </div>\n\n    <!-- List group -->\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\" ng-repeat=\"story in c.data.storyList\">{{story.name}}</li>\n    </ul>\n  </div>\n</div>",
+            "value": "<div>\n  <!-- your widget template -->\n  <div class=\"panel panel-default\">\n    <!-- Default panel contents -->\n    <div class=\"panel-heading\">Module Stories:</div>\n    <!-- <div class=\"panel-body\">\n    </div> -->\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\" ng-repeat=\"story in c.data.storyList\">{{story.name}}</li>\n    </ul>\n  </div>\n</div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  data.storyList = [];\n\n  if (input && input.action === \"loadClass\") {\n    storyList(input.sys_id, \"\");\n  }\n\n  function storyList(classID, moduleID) {\n    var traineeGR = new GlideRecordSecure(\"x_adsr_tap_m2m_trainee\");\n    traineeGR.addQuery(\"x_adsr_tap_class\", classID);\n    traineeGR.setLimit(1);\n    traineeGR.query();\n    while (traineeGR.next()) {\n      var storyGR = new GlideRecordSecure(\"x_adsr_tap_m2m_story_instance\");\n      storyGR.addQuery(\"x_adsr_tap_m2m_trainee\", traineeGR.sys_id.toString());\n      // storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n      storyGR.query();\n      while (storyGR.next()) {\n        var storyObj = {\n          name: storyGR.x_adsr_tap_story.getDisplayValue(),\n          acceptanceCri:\n            storyGR.x_adsr_tap_story.acceptance_criteria.getDisplayValue(),\n        };\n        data.storyList.push(storyObj);\n      }\n    }\n  }\n  console.log(data.storyList);\n})();\n",
+            "displayValue": "(function () {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\n\tdata.storyList = [];\n\n\tif (input && input.action === \"loadClass\") {\n\t\tstoryList(input.sys_id);\n\t}\n\n\tfunction storyList(classID) {\n\t\tvar storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n\t\tstoryGR.addQuery(\"module\", classID);\n\t\t// storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n\t\tstoryGR.query();\n\t\twhile (storyGR.next()) {\n\t\t\tvar storyObj = {\n\t\t\t\tname: storyGR.name.getDisplayValue(),\n\t\t\t\tacceptanceCri:\n\t\t\t\tstoryGR.acceptance_criteria.getDisplayValue(),\n\t\t\t};\n\t\t\tdata.storyList.push(storyObj);\n\t\t}\n\t}\n})();\n",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  data.storyList = [];\n\n  if (input && input.action === \"loadClass\") {\n    storyList(input.sys_id, \"\");\n  }\n\n  function storyList(classID, moduleID) {\n    var traineeGR = new GlideRecordSecure(\"x_adsr_tap_m2m_trainee\");\n    traineeGR.addQuery(\"x_adsr_tap_class\", classID);\n    traineeGR.setLimit(1);\n    traineeGR.query();\n    while (traineeGR.next()) {\n      var storyGR = new GlideRecordSecure(\"x_adsr_tap_m2m_story_instance\");\n      storyGR.addQuery(\"x_adsr_tap_m2m_trainee\", traineeGR.sys_id.toString());\n      // storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n      storyGR.query();\n      while (storyGR.next()) {\n        var storyObj = {\n          name: storyGR.x_adsr_tap_story.getDisplayValue(),\n          acceptanceCri:\n            storyGR.x_adsr_tap_story.acceptance_criteria.getDisplayValue(),\n        };\n        data.storyList.push(storyObj);\n      }\n    }\n  }\n  console.log(data.storyList);\n})();\n",
+            "value": "(function () {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\n\tdata.storyList = [];\n\n\tif (input && input.action === \"loadClass\") {\n\t\tstoryList(input.sys_id);\n\t}\n\n\tfunction storyList(classID) {\n\t\tvar storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n\t\tstoryGR.addQuery(\"module\", classID);\n\t\t// storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n\t\tstoryGR.query();\n\t\twhile (storyGR.next()) {\n\t\t\tvar storyObj = {\n\t\t\t\tname: storyGR.name.getDisplayValue(),\n\t\t\t\tacceptanceCri:\n\t\t\t\tstoryGR.acceptance_criteria.getDisplayValue(),\n\t\t\t};\n\t\t\tdata.storyList.push(storyObj);\n\t\t}\n\t}\n})();\n",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($rootScope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n  $rootScope.$on(\"currentClass\", function (event, args) {\r\n    loadClass(args.sys_id, args.modifiable);\r\n  });\r\n\r\n  function loadClass(id, modifiable) {\r\n    c.data.sys_id = id;\r\n    c.data.modifiable = modifiable;\r\n    c.data.action = \"loadClass\";\r\n    c.server.update().then(function () {\r\n      c.data.action = undefined;\r\n    });\r\n  }\r\n};\r\n",
+            "displayValue": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedModule\", function (event, args) {\n    loadClass(args.mod_sys_id);\n  });\n\n  function loadClass(id) {\n\t\tconsole.log(id);\n    c.data.sys_id = id;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n    });\n  }\n\t\n\t\n};\n",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($rootScope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n  $rootScope.$on(\"currentClass\", function (event, args) {\r\n    loadClass(args.sys_id, args.modifiable);\r\n  });\r\n\r\n  function loadClass(id, modifiable) {\r\n    c.data.sys_id = id;\r\n    c.data.modifiable = modifiable;\r\n    c.data.action = \"loadClass\";\r\n    c.server.update().then(function () {\r\n      c.data.action = undefined;\r\n    });\r\n  }\r\n};\r\n",
+            "value": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedModule\", function (event, args) {\n    loadClass(args.mod_sys_id);\n  });\n\n  function loadClass(id) {\n\t\tconsole.log(id);\n    c.data.sys_id = id;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n    });\n  }\n\t\n\t\n};\n",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"
