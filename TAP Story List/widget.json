@@ -2,7 +2,7 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "a89624a21b3921501ddefc851a4bcbc0f1e897170a466c446a85d6487e656afe1f75d0d2"
+        "g_ck": "01ec36031bb5a1501ddefc851a4bcb73f3eac318c311ec1fe3c2bd9679e54ffdd24490ba"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "<div>\n  <!-- your widget template -->\n  <div class=\"panel panel-default\">\n    <!-- Default panel contents -->\n    <div class=\"panel-heading\">Module Stories:</div>\n    <!-- <div class=\"panel-body\">\n    </div> -->\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\" ng-repeat=\"story in c.data.storyList\">{{story.name}}</li>\n    </ul>\n  </div>\n</div>",
+            "displayValue": "<uib-accordion close-others=\"oneAtATime\">\n  <div uib-accordion-group class=\"panel-default\" \n       heading=\"{{story.name}}\" \n       ng-repeat=\"story in c.data.storyList\">\n    {{story.criteria}}\n  </div>\n</uib-accordion>\n\n<!--<div class=\"list-group-spacing\">\n        <div class=\"list-group\">\n            <a href=\"#\" ng-click=\"currentClass(class.sys_id, class.when, class.type); changeSelected(class.sys_id);\"\n                ng-class=\"class.selected ? 'list-group-item active' : 'list-group-item'\"\n                ng-repeat=\"class in c.data.classes | filter : {when : filterItems}\">\n                <h4 class=\"list-group-item-heading\">{{class.name}}</h4>\n                <p class=\"list-group-item-text\">{{class.short_desc}}</p>\n            </a>\n        </div>\n    </div> -->\n\n\n",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "<div>\n  <!-- your widget template -->\n  <div class=\"panel panel-default\">\n    <!-- Default panel contents -->\n    <div class=\"panel-heading\">Module Stories:</div>\n    <!-- <div class=\"panel-body\">\n    </div> -->\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\" ng-repeat=\"story in c.data.storyList\">{{story.name}}</li>\n    </ul>\n  </div>\n</div>",
+            "value": "<uib-accordion close-others=\"oneAtATime\">\n  <div uib-accordion-group class=\"panel-default\" \n       heading=\"{{story.name}}\" \n       ng-repeat=\"story in c.data.storyList\">\n    {{story.criteria}}\n  </div>\n</uib-accordion>\n\n<!--<div class=\"list-group-spacing\">\n        <div class=\"list-group\">\n            <a href=\"#\" ng-click=\"currentClass(class.sys_id, class.when, class.type); changeSelected(class.sys_id);\"\n                ng-class=\"class.selected ? 'list-group-item active' : 'list-group-item'\"\n                ng-repeat=\"class in c.data.classes | filter : {when : filterItems}\">\n                <h4 class=\"list-group-item-heading\">{{class.name}}</h4>\n                <p class=\"list-group-item-text\">{{class.short_desc}}</p>\n            </a>\n        </div>\n    </div> -->\n\n\n",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function () {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\n\tdata.storyList = [];\n\n\tif (input && input.action === \"loadClass\") {\n\t\tstoryList(input.sys_id);\n\t}\n\n\tfunction storyList(classID) {\n\t\tvar storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n\t\tstoryGR.addQuery(\"module\", classID);\n\t\t// storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n\t\tstoryGR.query();\n\t\twhile (storyGR.next()) {\n\t\t\tvar storyObj = {\n\t\t\t\tname: storyGR.name.getDisplayValue(),\n\t\t\t\tacceptanceCri:\n\t\t\t\tstoryGR.acceptance_criteria.getDisplayValue(),\n\t\t\t};\n\t\t\tdata.storyList.push(storyObj);\n\t\t}\n\t}\n})();\n",
+            "displayValue": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  data.storyList = [];\n\n  if (input && input.action === \"loadClass\") {\n    storyList(input.sys_id);\n  }\n\n  function storyList(classID) {\n    var storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n    storyGR.addQuery(\"module\", classID);\n    // storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n    storyGR.query();\n    while (storyGR.next()) {\n      var storyObj = {\n        name: storyGR.name.getDisplayValue(),\n        criteria: storyGR.acceptance_criteria.getDisplayValue(),\n\t\t\t\tsys_id: storyGR.getDisplayValue(\"sys_id\"),\n\t\t\t\tdesc: storyGR.getDisplayValue(\"description\")\n      };\n      data.storyList.push(storyObj);\n    }\n  }\n})();\n",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function () {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\n\tdata.storyList = [];\n\n\tif (input && input.action === \"loadClass\") {\n\t\tstoryList(input.sys_id);\n\t}\n\n\tfunction storyList(classID) {\n\t\tvar storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n\t\tstoryGR.addQuery(\"module\", classID);\n\t\t// storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n\t\tstoryGR.query();\n\t\twhile (storyGR.next()) {\n\t\t\tvar storyObj = {\n\t\t\t\tname: storyGR.name.getDisplayValue(),\n\t\t\t\tacceptanceCri:\n\t\t\t\tstoryGR.acceptance_criteria.getDisplayValue(),\n\t\t\t};\n\t\t\tdata.storyList.push(storyObj);\n\t\t}\n\t}\n})();\n",
+            "value": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  data.storyList = [];\n\n  if (input && input.action === \"loadClass\") {\n    storyList(input.sys_id);\n  }\n\n  function storyList(classID) {\n    var storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n    storyGR.addQuery(\"module\", classID);\n    // storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n    storyGR.query();\n    while (storyGR.next()) {\n      var storyObj = {\n        name: storyGR.name.getDisplayValue(),\n        criteria: storyGR.acceptance_criteria.getDisplayValue(),\n\t\t\t\tsys_id: storyGR.getDisplayValue(\"sys_id\"),\n\t\t\t\tdesc: storyGR.getDisplayValue(\"description\")\n      };\n      data.storyList.push(storyObj);\n    }\n  }\n})();\n",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedModule\", function (event, args) {\n    loadClass(args.mod_sys_id);\n  });\n\n  function loadClass(id) {\n\t\tconsole.log(id);\n    c.data.sys_id = id;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n    });\n  }\n\t\n\t\n};\n",
+            "displayValue": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedModule\", function (event, args) {\n    loadClass(args.mod_sys_id);\n  });\n\n  function loadClass(id) {\n    console.log(id);\n    c.data.sys_id = id;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n    });\n  }\t\n\t\n/*\tfunction decodeHTML(str) {\n    var a = str.replace(/<\\/?[^>]+(>|$)/g, \"\"); //Remove tags\n    var b = a.replace(/&amp;/g, '&'); //Retain any ampersands that are just ampersands\n    return b.replace(/&#(\\d+);/g, function(match, dec) {\n        return String.fromCharCode(dec); //Returns the special character from the decimal code representation and returns the entire decoded string.\n    });\n}\n\tdecodeHTML(\"test\");\n\t*/\n\t\n/*\t  $scope.changeSelected = function (id) {\n    for (var k = 0; k < c.data.classes.length; k++) {\n      c.data.classes[k].selected = false;\n    }\n\n    for (var j = 0; j < c.data.classes.length; j++) {\n      if (c.data.classes[j].sys_id == id) {\n        c.data.classes[j].selected = true;\n        //console.log(c.data.classes);\n        break;\n      }\n    }\n\n  }\n\t*/\n};\n",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedModule\", function (event, args) {\n    loadClass(args.mod_sys_id);\n  });\n\n  function loadClass(id) {\n\t\tconsole.log(id);\n    c.data.sys_id = id;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n    });\n  }\n\t\n\t\n};\n",
+            "value": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedModule\", function (event, args) {\n    loadClass(args.mod_sys_id);\n  });\n\n  function loadClass(id) {\n    console.log(id);\n    c.data.sys_id = id;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n    });\n  }\t\n\t\n/*\tfunction decodeHTML(str) {\n    var a = str.replace(/<\\/?[^>]+(>|$)/g, \"\"); //Remove tags\n    var b = a.replace(/&amp;/g, '&'); //Retain any ampersands that are just ampersands\n    return b.replace(/&#(\\d+);/g, function(match, dec) {\n        return String.fromCharCode(dec); //Returns the special character from the decimal code representation and returns the entire decoded string.\n    });\n}\n\tdecodeHTML(\"test\");\n\t*/\n\t\n/*\t  $scope.changeSelected = function (id) {\n    for (var k = 0; k < c.data.classes.length; k++) {\n      c.data.classes[k].selected = false;\n    }\n\n    for (var j = 0; j < c.data.classes.length; j++) {\n      if (c.data.classes[j].sys_id == id) {\n        c.data.classes[j].selected = true;\n        //console.log(c.data.classes);\n        break;\n      }\n    }\n\n  }\n\t*/\n};\n",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"
