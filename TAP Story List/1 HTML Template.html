@@ -1,20 +1,5 @@
 <uib-accordion close-others="oneAtATime">
-  <div uib-accordion-group class="panel-default" 
-       heading="{{story.name}}" 
-       ng-repeat="story in c.data.storyList">
-    {{story.criteria}}
+  <div uib-accordion-group class="panel-default" heading="{{story.name}}" ng-repeat="story in c.data.storyList">
+    <div ng-bind-html="story.criteria"></div>
   </div>
-</uib-accordion>
-
-<!--<div class="list-group-spacing">
-        <div class="list-group">
-            <a href="#" ng-click="currentClass(class.sys_id, class.when, class.type); changeSelected(class.sys_id);"
-                ng-class="class.selected ? 'list-group-item active' : 'list-group-item'"
-                ng-repeat="class in c.data.classes | filter : {when : filterItems}">
-                <h4 class="list-group-item-heading">{{class.name}}</h4>
-                <p class="list-group-item-text">{{class.short_desc}}</p>
-            </a>
-        </div>
-    </div> -->
-
-
+</uib-accordion>`

@@ -11,14 +11,16 @@
   function storyList(classID) {
     var storyGR = new GlideRecordSecure("x_adsr_tap_story");
     storyGR.addQuery("module", classID);
+    ``;
     // storyGR.addQuery("x_adsr_tap_story.module", input.moduleID);
     storyGR.query();
     while (storyGR.next()) {
       var storyObj = {
-        name: storyGR.name.getDisplayValue(),
-        criteria: storyGR.acceptance_criteria.getDisplayValue(),
-				sys_id: storyGR.getDisplayValue("sys_id"),
-				desc: storyGR.getDisplayValue("description")
+        name: storyGR.getElement("name").getDisplayValue(),
+        criteria: storyGR.getElement("acceptance_criteria").getDisplayValue(),
+        sys_id: storyGR.getDisplayValue("sys_id"),
+        desc: storyGR.getDisplayValue("description"),
+        selected: false,
       };
       data.storyList.push(storyObj);
     }
