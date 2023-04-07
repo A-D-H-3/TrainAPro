@@ -6,8 +6,8 @@
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
-    "name": "TAP Story List",
-    "sys_id": "5145cff41bfde9101ddefc851a4bcb09",
+    "name": "TAP Story Display",
+    "sys_id": "d492a039dbce2d507758240a13961942",
     "widget": {
         "template": {
             "sys_mandatory": false,
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "<uib-accordion close-others=\"oneAtATime\">\n  <div uib-accordion-group heading=\"{{story.name}}\" ng-repeat=\"story in c.data.storyList\">\n    <div ng-style=\"c.style\" ng-include=\"'story-list'\"></div>\n  </div>\n</uib-accordion>\n\n\n<div class=\"well well-lg col-md-6\">\n  I will know Test Story 4 is Complete when:\n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n  aliqua. Ipsum suspendisse ultrices gravida dictum fusce ut placerat. Pretium lectus quam id leo in. In fermentum\n  posuere urna nec tincidunt. Dignissim cras tincidunt lobortis feugiat vivamus at. Pharetra pharetra massa massa\n  ultricies mi quis hendrerit. Massa placerat duis ultricies lacus sed turpis tincidunt. Nibh cras pulvinar mattis nunc\n  sed blandit libero volutpat. Enim diam vulputate ut pharetra sit amet aliquam id. Sit amet commodo nulla facilisi.\n  Sapien nec sagittis aliquam malesuada bibendum arcu. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing enim\n  eu turpis egestas pretium aenean. Neque aliquam vestibulum morbi blandit cursus risus.\n</div>",
+            "displayValue": "  <div class=\"well well-lg\">\n<!-- your widget template -->\n\n  I will know Test Story 4 is Complete when:\n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n  aliqua. Ipsum suspendisse ultrices gravida dictum fusce ut placerat. Pretium lectus quam id leo in. In fermentum\n  posuere urna nec tincidunt. Dignissim cras tincidunt lobortis feugiat vivamus at. Pharetra pharetra massa massa\n  ultricies mi quis hendrerit. Massa placerat duis ultricies lacus sed turpis tincidunt. Nibh cras pulvinar mattis nunc\n  sed blandit libero volutpat. Enim diam vulputate ut pharetra sit amet aliquam id. Sit amet commodo nulla facilisi.\n  Sapien nec sagittis aliquam malesuada bibendum arcu. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing enim\n  eu turpis egestas pretium aenean. Neque aliquam vestibulum morbi blandit cursus risus.\n\n</div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "<uib-accordion close-others=\"oneAtATime\">\n  <div uib-accordion-group heading=\"{{story.name}}\" ng-repeat=\"story in c.data.storyList\">\n    <div ng-style=\"c.style\" ng-include=\"'story-list'\"></div>\n  </div>\n</uib-accordion>\n\n\n<div class=\"well well-lg col-md-6\">\n  I will know Test Story 4 is Complete when:\n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n  aliqua. Ipsum suspendisse ultrices gravida dictum fusce ut placerat. Pretium lectus quam id leo in. In fermentum\n  posuere urna nec tincidunt. Dignissim cras tincidunt lobortis feugiat vivamus at. Pharetra pharetra massa massa\n  ultricies mi quis hendrerit. Massa placerat duis ultricies lacus sed turpis tincidunt. Nibh cras pulvinar mattis nunc\n  sed blandit libero volutpat. Enim diam vulputate ut pharetra sit amet aliquam id. Sit amet commodo nulla facilisi.\n  Sapien nec sagittis aliquam malesuada bibendum arcu. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing enim\n  eu turpis egestas pretium aenean. Neque aliquam vestibulum morbi blandit cursus risus.\n</div>",
+            "value": "  <div class=\"well well-lg\">\n<!-- your widget template -->\n\n  I will know Test Story 4 is Complete when:\n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n  aliqua. Ipsum suspendisse ultrices gravida dictum fusce ut placerat. Pretium lectus quam id leo in. In fermentum\n  posuere urna nec tincidunt. Dignissim cras tincidunt lobortis feugiat vivamus at. Pharetra pharetra massa massa\n  ultricies mi quis hendrerit. Massa placerat duis ultricies lacus sed turpis tincidunt. Nibh cras pulvinar mattis nunc\n  sed blandit libero volutpat. Enim diam vulputate ut pharetra sit amet aliquam id. Sit amet commodo nulla facilisi.\n  Sapien nec sagittis aliquam malesuada bibendum arcu. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing enim\n  eu turpis egestas pretium aenean. Neque aliquam vestibulum morbi blandit cursus risus.\n\n</div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -37,13 +37,13 @@
             "sys_readonly": false,
             "type": "css",
             "mandatory": false,
-            "displayValue": "\n\n\n",
+            "displayValue": "",
             "readonly": false,
             "hint": "",
             "name": "css",
             "attributes": {},
             "choice": 0,
-            "value": "\n\n\n",
+            "value": "",
             "max_length": 8000,
             "ed": {
                 "name": "css"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  data.storyList = [];\n\n  if (input && input.action === \"loadStories\") {\n    storyList(input.sys_id);\n  }\n\n  function storyList(classID) {\n    var storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n    storyGR.addQuery(\"module\", classID);\n    // storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n    storyGR.query();\n    while (storyGR.next()) {\n      var storyObj = {\n        name: storyGR.getElement(\"name\").getDisplayValue(),\n        criteria: storyGR.getElement(\"acceptance_criteria\").getDisplayValue(),\n        sys_id: storyGR.getDisplayValue(\"sys_id\"),\n        desc: storyGR.getDisplayValue(\"description\"),\n        selected: false,\n      };\n      data.storyList.push(storyObj);\n    }\n  }\n})();\n",
+            "displayValue": "(function() {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n\r\n})();",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  data.storyList = [];\n\n  if (input && input.action === \"loadStories\") {\n    storyList(input.sys_id);\n  }\n\n  function storyList(classID) {\n    var storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n    storyGR.addQuery(\"module\", classID);\n    // storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n    storyGR.query();\n    while (storyGR.next()) {\n      var storyObj = {\n        name: storyGR.getElement(\"name\").getDisplayValue(),\n        criteria: storyGR.getElement(\"acceptance_criteria\").getDisplayValue(),\n        sys_id: storyGR.getDisplayValue(\"sys_id\"),\n        desc: storyGR.getDisplayValue(\"description\"),\n        selected: false,\n      };\n      data.storyList.push(storyObj);\n    }\n  }\n})();\n",
+            "value": "(function() {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n\r\n})();",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedModule\", function (event, args) {\n    loadStories(args.mod_sys_id);\n  });\n\n  function loadStories(id) {\n    c.data.sys_id = id;\n    c.data.action = \"loadStories\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n    });\n    console.log(id);\n  }\n\n  // function displayStory(id){\n  //   c.data.sys_id = id;\n  // }\n\n  // $scope.selectedModule = function (modID) {\n  //   moduleBroadcast(modID);\n  // };\n\n  // $rootScope.$on(\"currentClass\", function (event, args) {\n  //   loadClass(args.sys_id, args.modifiable);\n  // });\n\n  // function loadClass(id, modifiable) {\n  //   c.data.sys_id = id;\n  //   c.data.modifiable = modifiable;\n  //   c.data.action = \"loadClass\";\n  //   c.server.update().then(function () {\n  //     c.data.action = undefined;\n  //     $scope.selectedModule(c.data.moduleList[0].mod_sys_id);\n  //   });\n  // }\n\n  // function moduleBroadcast(modID) {\n  //   $rootScope.$broadcast(\"selectedModule\", {\n  //     mod_sys_id: modID,\t\t\n  //   });\n  // }\n};\n",
+            "displayValue": "api.controller=function() {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedStory\", function (event, args) {\n\t\tconsole.log(args.str_sys_id)\n  });\n};",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedModule\", function (event, args) {\n    loadStories(args.mod_sys_id);\n  });\n\n  function loadStories(id) {\n    c.data.sys_id = id;\n    c.data.action = \"loadStories\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n    });\n    console.log(id);\n  }\n\n  // function displayStory(id){\n  //   c.data.sys_id = id;\n  // }\n\n  // $scope.selectedModule = function (modID) {\n  //   moduleBroadcast(modID);\n  // };\n\n  // $rootScope.$on(\"currentClass\", function (event, args) {\n  //   loadClass(args.sys_id, args.modifiable);\n  // });\n\n  // function loadClass(id, modifiable) {\n  //   c.data.sys_id = id;\n  //   c.data.modifiable = modifiable;\n  //   c.data.action = \"loadClass\";\n  //   c.server.update().then(function () {\n  //     c.data.action = undefined;\n  //     $scope.selectedModule(c.data.moduleList[0].mod_sys_id);\n  //   });\n  // }\n\n  // function moduleBroadcast(modID) {\n  //   $rootScope.$broadcast(\"selectedModule\", {\n  //     mod_sys_id: modID,\t\t\n  //   });\n  // }\n};\n",
+            "value": "api.controller=function() {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedStory\", function (event, args) {\n\t\tconsole.log(args.str_sys_id)\n  });\n};",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"
@@ -307,13 +307,13 @@
             "sys_readonly": false,
             "type": "translated_field",
             "mandatory": true,
-            "displayValue": "TAP Story List",
+            "displayValue": "TAP Story Display",
             "readonly": false,
             "hint": "",
             "name": "name",
             "attributes": {},
             "choice": 0,
-            "value": "TAP Story List",
+            "value": "TAP Story Display",
             "max_length": 40,
             "ed": {
                 "name": "name"
@@ -361,7 +361,7 @@
             "sys_readonly": false,
             "type": "string",
             "mandatory": false,
-            "displayValue": "tap_story_list",
+            "displayValue": "tap_story_display",
             "readonly": false,
             "hint": "Identifier for $sp.embedWidget()",
             "name": "id",
@@ -369,7 +369,7 @@
                 "edge_encryption_enabled": "true"
             },
             "choice": 0,
-            "value": "tap_story_list",
+            "value": "tap_story_display",
             "max_length": 40,
             "ed": {
                 "name": "id"

@@ -1,5 +1,7 @@
 <uib-accordion close-others="oneAtATime">
-  <div uib-accordion-group class="panel-default" heading="{{story.name}}" ng-repeat="story in c.data.storyList">
-    <div ng-bind-html="story.criteria"></div>
+  <div uib-accordion-group heading="{{story.name}}" ng-repeat="story in c.data.storyList">
+    <div ng-style="c.style" ng-include="'story-list'"></div>
   </div>
-</uib-accordion>`
+</uib-accordion>
+
+
