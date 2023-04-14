@@ -2,12 +2,12 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "42c1e0b6db46a1107758240a139619499f0b512a11dd932533a23454b7a04512f1e98dff"
+        "g_ck": "93115a9fdbc225107758240a1396190b0e2b22bb23577d0707152cc81da12350ba723ce9"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
-    "name": "TAP Story Display",
-    "sys_id": "d492a039dbce2d507758240a13961942",
+    "name": "TAP Class Container",
+    "sys_id": "07f112461bede1101ddefc851a4bcbe1",
     "widget": {
         "template": {
             "sys_mandatory": false,
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "  <div class=\"well well-lg\">\n<!-- your widget template -->\n\n  I will know Test Story 4 is Complete when:\n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n  aliqua. Ipsum suspendisse ultrices gravida dictum fusce ut placerat. Pretium lectus quam id leo in. In fermentum\n  posuere urna nec tincidunt. Dignissim cras tincidunt lobortis feugiat vivamus at. Pharetra pharetra massa massa\n  ultricies mi quis hendrerit. Massa placerat duis ultricies lacus sed turpis tincidunt. Nibh cras pulvinar mattis nunc\n  sed blandit libero volutpat. Enim diam vulputate ut pharetra sit amet aliquam id. Sit amet commodo nulla facilisi.\n  Sapien nec sagittis aliquam malesuada bibendum arcu. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing enim\n  eu turpis egestas pretium aenean. Neque aliquam vestibulum morbi blandit cursus risus.\n\n</div>",
+            "displayValue": "<div class=\"col-12-md\">\r\n    <div class=\"parent\">\r\n        <div class=\"col-md-3 button-breakup\">\r\n            <sp-widget widget=\"data.addNewClass\"></sp-widget>\r\n        </div>\r\n        <div class=\"col-md-6 header\">\r\n            <h1>${Class Details}<span>Trainer Page</span></h1>\r\n        </div>\r\n        <div class=\"col-md-3 \">\r\n\r\n        </div>\r\n    </div>\r\n\r\n     <div class=\"col-md-9\">\r\n</div>\r\n<div class=\"col-md-3 button-breakup\">\r\n    \r\n</div> \r\n    <div class=\"col-md-3\">\r\n        <sp-widget widget=\"data.classList\"></sp-widget>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n        <sp-widget widget=\"data.classInformation\"></sp-widget>\r\n    </div>\r\n    <div class=\"col-md-3\">\r\n        <sp-widget widget=\"data.traineeList\"></sp-widget>\r\n    </div>\r\n</div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "  <div class=\"well well-lg\">\n<!-- your widget template -->\n\n  I will know Test Story 4 is Complete when:\n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n  aliqua. Ipsum suspendisse ultrices gravida dictum fusce ut placerat. Pretium lectus quam id leo in. In fermentum\n  posuere urna nec tincidunt. Dignissim cras tincidunt lobortis feugiat vivamus at. Pharetra pharetra massa massa\n  ultricies mi quis hendrerit. Massa placerat duis ultricies lacus sed turpis tincidunt. Nibh cras pulvinar mattis nunc\n  sed blandit libero volutpat. Enim diam vulputate ut pharetra sit amet aliquam id. Sit amet commodo nulla facilisi.\n  Sapien nec sagittis aliquam malesuada bibendum arcu. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing enim\n  eu turpis egestas pretium aenean. Neque aliquam vestibulum morbi blandit cursus risus.\n\n</div>",
+            "value": "<div class=\"col-12-md\">\r\n    <div class=\"parent\">\r\n        <div class=\"col-md-3 button-breakup\">\r\n            <sp-widget widget=\"data.addNewClass\"></sp-widget>\r\n        </div>\r\n        <div class=\"col-md-6 header\">\r\n            <h1>${Class Details}<span>Trainer Page</span></h1>\r\n        </div>\r\n        <div class=\"col-md-3 \">\r\n\r\n        </div>\r\n    </div>\r\n\r\n     <div class=\"col-md-9\">\r\n</div>\r\n<div class=\"col-md-3 button-breakup\">\r\n    \r\n</div> \r\n    <div class=\"col-md-3\">\r\n        <sp-widget widget=\"data.classList\"></sp-widget>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n        <sp-widget widget=\"data.classInformation\"></sp-widget>\r\n    </div>\r\n    <div class=\"col-md-3\">\r\n        <sp-widget widget=\"data.traineeList\"></sp-widget>\r\n    </div>\r\n</div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -37,13 +37,13 @@
             "sys_readonly": false,
             "type": "css",
             "mandatory": false,
-            "displayValue": "",
+            "displayValue": ".parent {\r\n    width: 100%;\r\n    //display:inline-block;\r\n    height: 125px;\r\n    display: flex;\r\n    position: relative;\r\n}\r\n\r\n// .button-parent {\r\n//     display: flex;\r\n// }\r\n@media only screen \r\nand (max-width : 991px) {\r\n    .parent{\r\n        display: inline-block;\r\n    }\r\n\r\n    .button-breakup {\r\n        position: relative;\r\n        bottom: 5;\r\n    }\r\n}\r\n\r\n.button-breakup {\r\n   margin-bottom: 8px;\r\n   display: flex;\r\n   align-items: flex-end;\r\n   flex-direction: row;\r\n   justify-content: flex-end;\r\n}\r\n\r\n\r\n// width 991\r\n\r\n  .header h1 {\r\n    padding: 10px;\r\n    text-align:center; font-size:45px; text-transform:uppercase; color:#222; letter-spacing:1px;\r\n    font-family:\"Playfair Display\", serif; font-weight:400;\r\n  }\r\n  .header h1 span {\r\n    margin-top: 5px;\r\n      font-size:15px; color:#444; word-spacing:1px; font-weight:normal; letter-spacing:2px;\r\n      text-transform: uppercase; font-family:\"Raleway\", sans-serif; font-weight:500;\r\n  \r\n      display: grid;\r\n      //grid-template-columns: 1fr max-content 1fr;\r\n      //grid-template-rows: 27px 0;\r\n      //grid-gap: 20px;\r\n      align-items: center;\r\n  }\r\n  \r\n  .header h1 span:after,.nine h1 span:before {\r\n    margin-top: 10px;\r\n      content: \" \";\r\n      display: block;\r\n      border-bottom: 1px solid #ccc;\r\n      border-top: 1px solid #ccc;\r\n      height: 5px;\r\n    //background-color:#f8f8f8;\r\n  }\r\n  \r\n  ",
             "readonly": false,
             "hint": "",
             "name": "css",
             "attributes": {},
             "choice": 0,
-            "value": "",
+            "value": ".parent {\r\n    width: 100%;\r\n    //display:inline-block;\r\n    height: 125px;\r\n    display: flex;\r\n    position: relative;\r\n}\r\n\r\n// .button-parent {\r\n//     display: flex;\r\n// }\r\n@media only screen \r\nand (max-width : 991px) {\r\n    .parent{\r\n        display: inline-block;\r\n    }\r\n\r\n    .button-breakup {\r\n        position: relative;\r\n        bottom: 5;\r\n    }\r\n}\r\n\r\n.button-breakup {\r\n   margin-bottom: 8px;\r\n   display: flex;\r\n   align-items: flex-end;\r\n   flex-direction: row;\r\n   justify-content: flex-end;\r\n}\r\n\r\n\r\n// width 991\r\n\r\n  .header h1 {\r\n    padding: 10px;\r\n    text-align:center; font-size:45px; text-transform:uppercase; color:#222; letter-spacing:1px;\r\n    font-family:\"Playfair Display\", serif; font-weight:400;\r\n  }\r\n  .header h1 span {\r\n    margin-top: 5px;\r\n      font-size:15px; color:#444; word-spacing:1px; font-weight:normal; letter-spacing:2px;\r\n      text-transform: uppercase; font-family:\"Raleway\", sans-serif; font-weight:500;\r\n  \r\n      display: grid;\r\n      //grid-template-columns: 1fr max-content 1fr;\r\n      //grid-template-rows: 27px 0;\r\n      //grid-gap: 20px;\r\n      align-items: center;\r\n  }\r\n  \r\n  .header h1 span:after,.nine h1 span:before {\r\n    margin-top: 10px;\r\n      content: \" \";\r\n      display: block;\r\n      border-bottom: 1px solid #ccc;\r\n      border-top: 1px solid #ccc;\r\n      height: 5px;\r\n    //background-color:#f8f8f8;\r\n  }\r\n  \r\n  ",
             "max_length": 8000,
             "ed": {
                 "name": "css"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function() {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n\r\n})();",
+            "displayValue": "(function() {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\tdata.addNewClass = $sp.getWidget('tap_new_class', {});\n\tdata.classInformation = $sp.getWidget('tap_class_details', {});\n\tdata.classList = $sp.getWidget('tap_class_list', {});\n\tdata.traineeList = $sp.getWidget('tap_trainee_list', {});\n})();",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function() {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n\r\n})();",
+            "value": "(function() {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\tdata.addNewClass = $sp.getWidget('tap_new_class', {});\n\tdata.classInformation = $sp.getWidget('tap_class_details', {});\n\tdata.classList = $sp.getWidget('tap_class_list', {});\n\tdata.traineeList = $sp.getWidget('tap_trainee_list', {});\n})();",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($rootScope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedStory\", function (event, args) {\n    console.log(args.str_sys_id);\n    console.log(args.criteria);\n  });\n};\n",
+            "displayValue": "api.controller=function($scope, $rootScope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n};",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($rootScope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedStory\", function (event, args) {\n    console.log(args.str_sys_id);\n    console.log(args.criteria);\n  });\n};\n",
+            "value": "api.controller=function($scope, $rootScope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n};",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"
@@ -307,13 +307,13 @@
             "sys_readonly": false,
             "type": "translated_field",
             "mandatory": true,
-            "displayValue": "TAP Story Display",
+            "displayValue": "TAP Class Container",
             "readonly": false,
             "hint": "",
             "name": "name",
             "attributes": {},
             "choice": 0,
-            "value": "TAP Story Display",
+            "value": "TAP Class Container",
             "max_length": 40,
             "ed": {
                 "name": "name"
@@ -362,7 +362,7 @@
             "sys_readonly": false,
             "type": "string",
             "mandatory": false,
-            "displayValue": "tap_story_display",
+            "displayValue": "tap_class_container",
             "readonly": false,
             "hint": "Identifier for $sp.embedWidget()",
             "name": "id",
@@ -370,7 +370,7 @@
                 "edge_encryption_enabled": "true"
             },
             "choice": 0,
-            "value": "tap_story_display",
+            "value": "tap_class_container",
             "max_length": 40,
             "ed": {
                 "name": "id"

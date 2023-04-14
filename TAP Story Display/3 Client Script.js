@@ -1,4 +1,4 @@
-api.controller = function () {
+api.controller = function ($rootScope) {
   /* widget controller */
   var c = this;
 
@@ -6,4 +6,8 @@ api.controller = function () {
     console.log(args.str_sys_id);
     console.log(args.criteria);
   });
+
+  displayStr = function () {
+    console.log("test");
+  };
 };

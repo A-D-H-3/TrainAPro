@@ -1,27 +1,41 @@
 api.controller = function ($rootScope, $scope) {
-  /* widget controller */
-  var c = this;
+	/* widget controller */
+	var c = this;
 
-  $rootScope.$on("selectedModule", function (event, args) {
-    loadStories(args.mod_sys_id);
-  });
+	$scope.loading = true;
 
-  function loadStories(id) {
-    c.data.sys_id = id;
-    c.data.action = "loadStories";
-    c.server.update().then(function () {
-      c.data.action = undefined;
-      $scope.selectedStory(c.data.storyList[0].str_sys_id);
-    });
-  }
+	$rootScope.$on("selectedModule", function (event, args) {
+		loadStories(args.mod_sys_id);
+	});
 
-  $scope.selectedStory = function (modID) {
-    storyBroadcast(modID);
-  };
+	function loadStories(id) {
+		$scope.loading = true;
+		c.data.storyList = undefined;
+		c.data.sys_id = id;
+		c.data.action = "loadStories";
+		c.server.update().then(function () {
+			c.data.action = undefined;
+			if (!c.data.storyList) {
+				storyBroadcast(undefined, undefined);
+			}
+			else {
+				storyBroadcast(
+					c.data.storyList[0].str_sys_id,
+					c.data.storyList[0].criteria
+				);
+			}
+		});
+	}
 
-  function storyBroadcast(modID) {
-    $rootScope.$broadcast("selectedStory", {
-      str_sys_id: modID,
-    });
-  }
+	function storyBroadcast(modID, details) {
+		$rootScope.$broadcast("selectedStory", {
+			str_sys_id: modID,
+			criteria: details,
+		});
+		$scope.loading = false;
+	}
+
+	$scope.selectedStory = function (modID, details) {
+		storyBroadcast(modID, details);
+	};
 };

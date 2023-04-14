@@ -2,7 +2,7 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "5fe95c31dbce2d507758240a1396198a7323204b9bb8402d6d239932263523bdbcab9813"
+        "g_ck": "88a0d444dbd2a5107758240a139619bdb1748da97ab15d35e3dd5b5c4cca4cd3e26321e2"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "<uib-accordion close-others=\"oneAtATime\">\n  <div uib-accordion-group heading=\"{{story.name}}\" ng-repeat=\"story in c.data.storyList\">\n    <div ng-style=\"c.style\" ng-include=\"'story-list'\"></div>\n  </div>\n</uib-accordion>\n\n\n<div class=\"well well-lg col-md-6\">\n  I will know Test Story 4 is Complete when:\n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n  aliqua. Ipsum suspendisse ultrices gravida dictum fusce ut placerat. Pretium lectus quam id leo in. In fermentum\n  posuere urna nec tincidunt. Dignissim cras tincidunt lobortis feugiat vivamus at. Pharetra pharetra massa massa\n  ultricies mi quis hendrerit. Massa placerat duis ultricies lacus sed turpis tincidunt. Nibh cras pulvinar mattis nunc\n  sed blandit libero volutpat. Enim diam vulputate ut pharetra sit amet aliquam id. Sit amet commodo nulla facilisi.\n  Sapien nec sagittis aliquam malesuada bibendum arcu. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing enim\n  eu turpis egestas pretium aenean. Neque aliquam vestibulum morbi blandit cursus risus.\n</div>",
+            "displayValue": "<!-- <uib-accordion close-others=\"oneAtATime\">\n  <div uib-accordion-group heading=\"{{story.name}}\" ng-repeat=\"story in c.data.storyList\">\n    <div ng-style=\"c.style\" ng-include=\"'story-list'\"></div>\n  </div>\n</uib-accordion> -->\n\n<div class=\"list-group\" ng-if=\"c.data.storyList.length != 0\" ng-repeat=\"story in c.data.storyList\">\n  <li class=\"list-group-item\" ng-click='selectedStory(story.str_sys_id, story.criteria)'>{{story.name}}</li>\n</div>\n\n<div ng-if=\"!c.data.storyList && !loading\">\n\t<h2>${No Stories Associated to this module please visit the class page for more details}</h2>\n</div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "<uib-accordion close-others=\"oneAtATime\">\n  <div uib-accordion-group heading=\"{{story.name}}\" ng-repeat=\"story in c.data.storyList\">\n    <div ng-style=\"c.style\" ng-include=\"'story-list'\"></div>\n  </div>\n</uib-accordion>\n\n\n<div class=\"well well-lg col-md-6\">\n  I will know Test Story 4 is Complete when:\n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n  aliqua. Ipsum suspendisse ultrices gravida dictum fusce ut placerat. Pretium lectus quam id leo in. In fermentum\n  posuere urna nec tincidunt. Dignissim cras tincidunt lobortis feugiat vivamus at. Pharetra pharetra massa massa\n  ultricies mi quis hendrerit. Massa placerat duis ultricies lacus sed turpis tincidunt. Nibh cras pulvinar mattis nunc\n  sed blandit libero volutpat. Enim diam vulputate ut pharetra sit amet aliquam id. Sit amet commodo nulla facilisi.\n  Sapien nec sagittis aliquam malesuada bibendum arcu. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing enim\n  eu turpis egestas pretium aenean. Neque aliquam vestibulum morbi blandit cursus risus.\n</div>",
+            "value": "<!-- <uib-accordion close-others=\"oneAtATime\">\n  <div uib-accordion-group heading=\"{{story.name}}\" ng-repeat=\"story in c.data.storyList\">\n    <div ng-style=\"c.style\" ng-include=\"'story-list'\"></div>\n  </div>\n</uib-accordion> -->\n\n<div class=\"list-group\" ng-if=\"c.data.storyList.length != 0\" ng-repeat=\"story in c.data.storyList\">\n  <li class=\"list-group-item\" ng-click='selectedStory(story.str_sys_id, story.criteria)'>{{story.name}}</li>\n</div>\n\n<div ng-if=\"!c.data.storyList && !loading\">\n\t<h2>${No Stories Associated to this module please visit the class page for more details}</h2>\n</div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -57,7 +57,7 @@
             "sys_readonly": false,
             "type": "user_roles",
             "mandatory": false,
-            "displayValue": "",
+            "displayValue": "x_adsr_tap.trainee",
             "readonly": false,
             "hint": "",
             "name": "roles",
@@ -67,7 +67,7 @@
                 "record_watcher_blacklist": "true"
             },
             "choice": 0,
-            "value": "",
+            "value": "x_adsr_tap.trainee",
             "max_length": 255,
             "ed": {
                 "name": "roles"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  data.storyList = [];\n\n  if (input && input.action === \"loadStories\") {\n    storyList(input.sys_id);\n  }\n\n  function storyList(classID) {\n    var storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n    storyGR.addQuery(\"module\", classID);\n    // storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n    storyGR.query();\n    while (storyGR.next()) {\n      var storyObj = {\n        name: storyGR.getElement(\"name\").getDisplayValue(),\n        criteria: storyGR.getElement(\"acceptance_criteria\").getDisplayValue(),\n        sys_id: storyGR.getDisplayValue(\"sys_id\"),\n        desc: storyGR.getDisplayValue(\"description\"),\n        selected: false,\n      };\n      data.storyList.push(storyObj);\n    }\n  }\n})();\n",
+            "displayValue": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  if (input && input.action === \"loadStories\") {\n    storyList(input.sys_id);\n  }\n\n  function storyList(classID) {\n    var storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n    storyGR.addQuery(\"module\", classID);\n    storyGR.query();\n\t\tif (!storyGR.next()) {\n      data.storyList = undefined;\n    }\n\t\telse if(storyGR.next()) {\n\t\t\tdata.storyList = [];\n    \twhile (storyGR.next()) {\n      var storyObj = {\n        name: storyGR.getElement(\"name\").getDisplayValue(),\n        criteria: storyGR.getElement(\"acceptance_criteria\").getDisplayValue(),\n        str_sys_id: storyGR.getDisplayValue(\"sys_id\"),\n        desc: storyGR.getDisplayValue(\"description\"),\n        selected: false,\n      };\n      data.storyList.push(storyObj);\n    }\n\t\t}\n    \n  }\n})();\n",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  data.storyList = [];\n\n  if (input && input.action === \"loadStories\") {\n    storyList(input.sys_id);\n  }\n\n  function storyList(classID) {\n    var storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n    storyGR.addQuery(\"module\", classID);\n    // storyGR.addQuery(\"x_adsr_tap_story.module\", input.moduleID);\n    storyGR.query();\n    while (storyGR.next()) {\n      var storyObj = {\n        name: storyGR.getElement(\"name\").getDisplayValue(),\n        criteria: storyGR.getElement(\"acceptance_criteria\").getDisplayValue(),\n        sys_id: storyGR.getDisplayValue(\"sys_id\"),\n        desc: storyGR.getDisplayValue(\"description\"),\n        selected: false,\n      };\n      data.storyList.push(storyObj);\n    }\n  }\n})();\n",
+            "value": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  if (input && input.action === \"loadStories\") {\n    storyList(input.sys_id);\n  }\n\n  function storyList(classID) {\n    var storyGR = new GlideRecordSecure(\"x_adsr_tap_story\");\n    storyGR.addQuery(\"module\", classID);\n    storyGR.query();\n\t\tif (!storyGR.next()) {\n      data.storyList = undefined;\n    }\n\t\telse if(storyGR.next()) {\n\t\t\tdata.storyList = [];\n    \twhile (storyGR.next()) {\n      var storyObj = {\n        name: storyGR.getElement(\"name\").getDisplayValue(),\n        criteria: storyGR.getElement(\"acceptance_criteria\").getDisplayValue(),\n        str_sys_id: storyGR.getDisplayValue(\"sys_id\"),\n        desc: storyGR.getDisplayValue(\"description\"),\n        selected: false,\n      };\n      data.storyList.push(storyObj);\n    }\n\t\t}\n    \n  }\n})();\n",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedModule\", function (event, args) {\n    loadStories(args.mod_sys_id);\n  });\n\n  function loadStories(id) {\n    c.data.sys_id = id;\n    c.data.action = \"loadStories\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n    });\n    console.log(id);\n  }\n\n  // function displayStory(id){\n  //   c.data.sys_id = id;\n  // }\n\n  // $scope.selectedModule = function (modID) {\n  //   moduleBroadcast(modID);\n  // };\n\n  // $rootScope.$on(\"currentClass\", function (event, args) {\n  //   loadClass(args.sys_id, args.modifiable);\n  // });\n\n  // function loadClass(id, modifiable) {\n  //   c.data.sys_id = id;\n  //   c.data.modifiable = modifiable;\n  //   c.data.action = \"loadClass\";\n  //   c.server.update().then(function () {\n  //     c.data.action = undefined;\n  //     $scope.selectedModule(c.data.moduleList[0].mod_sys_id);\n  //   });\n  // }\n\n  // function moduleBroadcast(modID) {\n  //   $rootScope.$broadcast(\"selectedModule\", {\n  //     mod_sys_id: modID,\t\t\n  //   });\n  // }\n};\n",
+            "displayValue": "api.controller = function ($rootScope, $scope) {\n\t/* widget controller */\n\tvar c = this;\n\n\t$scope.loading = true;\n\n\t$rootScope.$on(\"selectedModule\", function (event, args) {\n\t\tloadStories(args.mod_sys_id);\n\t});\n\n\tfunction loadStories(id) {\n\t\t$scope.loading = true;\n\t\tc.data.storyList = undefined;\n\t\tc.data.sys_id = id;\n\t\tc.data.action = \"loadStories\";\n\t\tc.server.update().then(function () {\n\t\t\tc.data.action = undefined;\n\t\t\tif (!c.data.storyList) {\n\t\t\t\tstoryBroadcast(undefined, undefined);\n\t\t\t}\n\t\t\telse {\n\t\t\t\tstoryBroadcast(\n\t\t\t\t\tc.data.storyList[0].str_sys_id,\n\t\t\t\t\tc.data.storyList[0].criteria\n\t\t\t\t);\n\t\t\t}\n\t\t});\n\t}\n\n\tfunction storyBroadcast(modID, details) {\n\t\t$rootScope.$broadcast(\"selectedStory\", {\n\t\t\tstr_sys_id: modID,\n\t\t\tcriteria: details,\n\t\t});\n\t\t$scope.loading = false;\n\t}\n\n\t$scope.selectedStory = function (modID, details) {\n\t\tstoryBroadcast(modID, details);\n\t};\n};\n",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedModule\", function (event, args) {\n    loadStories(args.mod_sys_id);\n  });\n\n  function loadStories(id) {\n    c.data.sys_id = id;\n    c.data.action = \"loadStories\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n    });\n    console.log(id);\n  }\n\n  // function displayStory(id){\n  //   c.data.sys_id = id;\n  // }\n\n  // $scope.selectedModule = function (modID) {\n  //   moduleBroadcast(modID);\n  // };\n\n  // $rootScope.$on(\"currentClass\", function (event, args) {\n  //   loadClass(args.sys_id, args.modifiable);\n  // });\n\n  // function loadClass(id, modifiable) {\n  //   c.data.sys_id = id;\n  //   c.data.modifiable = modifiable;\n  //   c.data.action = \"loadClass\";\n  //   c.server.update().then(function () {\n  //     c.data.action = undefined;\n  //     $scope.selectedModule(c.data.moduleList[0].mod_sys_id);\n  //   });\n  // }\n\n  // function moduleBroadcast(modID) {\n  //   $rootScope.$broadcast(\"selectedModule\", {\n  //     mod_sys_id: modID,\t\t\n  //   });\n  // }\n};\n",
+            "value": "api.controller = function ($rootScope, $scope) {\n\t/* widget controller */\n\tvar c = this;\n\n\t$scope.loading = true;\n\n\t$rootScope.$on(\"selectedModule\", function (event, args) {\n\t\tloadStories(args.mod_sys_id);\n\t});\n\n\tfunction loadStories(id) {\n\t\t$scope.loading = true;\n\t\tc.data.storyList = undefined;\n\t\tc.data.sys_id = id;\n\t\tc.data.action = \"loadStories\";\n\t\tc.server.update().then(function () {\n\t\t\tc.data.action = undefined;\n\t\t\tif (!c.data.storyList) {\n\t\t\t\tstoryBroadcast(undefined, undefined);\n\t\t\t}\n\t\t\telse {\n\t\t\t\tstoryBroadcast(\n\t\t\t\t\tc.data.storyList[0].str_sys_id,\n\t\t\t\t\tc.data.storyList[0].criteria\n\t\t\t\t);\n\t\t\t}\n\t\t});\n\t}\n\n\tfunction storyBroadcast(modID, details) {\n\t\t$rootScope.$broadcast(\"selectedStory\", {\n\t\t\tstr_sys_id: modID,\n\t\t\tcriteria: details,\n\t\t});\n\t\t$scope.loading = false;\n\t}\n\n\t$scope.selectedStory = function (modID, details) {\n\t\tstoryBroadcast(modID, details);\n\t};\n};\n",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"
@@ -337,6 +337,7 @@
             "hint": "Application containing this record",
             "name": "sys_scope",
             "attributes": {
+                "encode_utf8": "false",
                 "list_force_default": "true",
                 "readonly_clickthrough": "true",
                 "ignore_filter_on_new": "true"

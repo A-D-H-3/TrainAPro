@@ -2,12 +2,12 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "42c1e0b6db46a1107758240a139619499f0b512a11dd932533a23454b7a04512f1e98dff"
+        "g_ck": "88a0d444dbd2a5107758240a139619bdb1748da97ab15d35e3dd5b5c4cca4cd3e26321e2"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
-    "name": "TAP Story Display",
-    "sys_id": "d492a039dbce2d507758240a13961942",
+    "name": "TAP Overview Container",
+    "sys_id": "4d7a49b8dbe121107758240a13961935",
     "widget": {
         "template": {
             "sys_mandatory": false,
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "  <div class=\"well well-lg\">\n<!-- your widget template -->\n\n  I will know Test Story 4 is Complete when:\n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n  aliqua. Ipsum suspendisse ultrices gravida dictum fusce ut placerat. Pretium lectus quam id leo in. In fermentum\n  posuere urna nec tincidunt. Dignissim cras tincidunt lobortis feugiat vivamus at. Pharetra pharetra massa massa\n  ultricies mi quis hendrerit. Massa placerat duis ultricies lacus sed turpis tincidunt. Nibh cras pulvinar mattis nunc\n  sed blandit libero volutpat. Enim diam vulputate ut pharetra sit amet aliquam id. Sit amet commodo nulla facilisi.\n  Sapien nec sagittis aliquam malesuada bibendum arcu. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing enim\n  eu turpis egestas pretium aenean. Neque aliquam vestibulum morbi blandit cursus risus.\n\n</div>",
+            "displayValue": "<div class=\"padded\">\n<div class=\"col-md-3\">\n    <sp-widget widget=\"c.data.classList\"></sp-widget>\n\t\t<sp-widget widget=\"c.data.trainerTile\"></sp-widget>\n</div>\n<div class=\"col-md-6\">\n  <sp-widget widget=\"data.moduleList\"></sp-widget>\n  <sp-widget widget=\"data.storyList\"></sp-widget>\n</div>\n<div class=\"col-md-3\">\n  <sp-widget widget=\"data.storyDisp\"></sp-widget>\n</div>\n</div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "  <div class=\"well well-lg\">\n<!-- your widget template -->\n\n  I will know Test Story 4 is Complete when:\n\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\n  aliqua. Ipsum suspendisse ultrices gravida dictum fusce ut placerat. Pretium lectus quam id leo in. In fermentum\n  posuere urna nec tincidunt. Dignissim cras tincidunt lobortis feugiat vivamus at. Pharetra pharetra massa massa\n  ultricies mi quis hendrerit. Massa placerat duis ultricies lacus sed turpis tincidunt. Nibh cras pulvinar mattis nunc\n  sed blandit libero volutpat. Enim diam vulputate ut pharetra sit amet aliquam id. Sit amet commodo nulla facilisi.\n  Sapien nec sagittis aliquam malesuada bibendum arcu. Eros donec ac odio tempor orci dapibus ultrices. Adipiscing enim\n  eu turpis egestas pretium aenean. Neque aliquam vestibulum morbi blandit cursus risus.\n\n</div>",
+            "value": "<div class=\"padded\">\n<div class=\"col-md-3\">\n    <sp-widget widget=\"c.data.classList\"></sp-widget>\n\t\t<sp-widget widget=\"c.data.trainerTile\"></sp-widget>\n</div>\n<div class=\"col-md-6\">\n  <sp-widget widget=\"data.moduleList\"></sp-widget>\n  <sp-widget widget=\"data.storyList\"></sp-widget>\n</div>\n<div class=\"col-md-3\">\n  <sp-widget widget=\"data.storyDisp\"></sp-widget>\n</div>\n</div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -37,13 +37,13 @@
             "sys_readonly": false,
             "type": "css",
             "mandatory": false,
-            "displayValue": "",
+            "displayValue": ".padded {\n  padding-top:10px;\n}",
             "readonly": false,
             "hint": "",
             "name": "css",
             "attributes": {},
             "choice": 0,
-            "value": "",
+            "value": ".padded {\n  padding-top:10px;\n}\n\n#story-li {\n  --color: #8a9b0f; /* the border color */\n  --border: 10px; /* the border thickness*/\n  --offset: 20px; /* control the offset*/\n  --gap: 5px; /* the gap on hover */\n\n  --_c: var(--color) var(--border), #0000 0 calc(100% - var(--border)),\n    var(--color) 0;\n  --_o: calc(3 * var(--offset));\n  padding: calc(var(--gap) + var(--border))\n    calc(var(--gap) + var(--border) + var(--offset))\n    calc(var(--gap) + var(--border) + var(--offset))\n    calc(var(--gap) + var(--border));\n  background: linear-gradient(var(--_c)) var(--_o) var(--_o),\n    linear-gradient(90deg, var(--_c)) var(--_o) var(--_o);\n  background-size: calc(100% - var(--_o)) calc(100% - var(--_o));\n  background-repeat: no-repeat;\n  filter: grayscale(0.4);\n  transition: 0.5s;\n  cursor: pointer;\n}\n#story-li:hover {\n  background-position: 0px 0px;\n  background-size: calc(100% - var(--offset)) calc(100% - var(--offset));\n  filter: grayscale(0);\n}\n\nbody {\n  background: #e8e9ba;\n  display: grid;\n  gap: 40px;\n  height: 100vh;\n  margin: 0;\n  grid-auto-flow: column;\n  place-content: center;\n}\n",
             "max_length": 8000,
             "ed": {
                 "name": "css"
@@ -57,7 +57,7 @@
             "sys_readonly": false,
             "type": "user_roles",
             "mandatory": false,
-            "displayValue": "",
+            "displayValue": "x_adsr_tap.trainee",
             "readonly": false,
             "hint": "",
             "name": "roles",
@@ -67,7 +67,7 @@
                 "record_watcher_blacklist": "true"
             },
             "choice": 0,
-            "value": "",
+            "value": "x_adsr_tap.trainee",
             "max_length": 255,
             "ed": {
                 "name": "roles"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function() {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n\r\n})();",
+            "displayValue": "(function() {\r\n    data.classList = $sp.getWidget(\"tap_class_list\", {});\r\n    data.trainerTile = $sp.getWidget(\"tap_trainer_tile\", {});\r\n    data.classInfo = $sp.getWidget('tap_class_details', {});\r\n    data.storyList = $sp.getWidget('tap_story_list', {});\r\n    data.moduleList = $sp.getWidget('tap_index_module_list', {});\r\n    data.storyDisp = $sp.getWidget('tap_story_display', {});\r\n\r\n    data.loggedInUser = gs.getUser().getFirstName();\r\n\r\n\tdata.userRole = new x_adsr_tap.userRoleUtility().privileges();\r\n})();",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function() {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n\r\n})();",
+            "value": "(function() {\r\n    data.classList = $sp.getWidget(\"tap_class_list\", {});\r\n    data.trainerTile = $sp.getWidget(\"tap_trainer_tile\", {});\r\n    data.classInfo = $sp.getWidget('tap_class_details', {});\r\n    data.storyList = $sp.getWidget('tap_story_list', {});\r\n    data.moduleList = $sp.getWidget('tap_index_module_list', {});\r\n    data.storyDisp = $sp.getWidget('tap_story_display', {});\r\n\r\n    data.loggedInUser = gs.getUser().getFirstName();\r\n\r\n\tdata.userRole = new x_adsr_tap.userRoleUtility().privileges();\r\n})();",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($rootScope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedStory\", function (event, args) {\n    console.log(args.str_sys_id);\n    console.log(args.criteria);\n  });\n};\n",
+            "displayValue": "api.controller = function ($scope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n  broadcasting(c.data.userRole);\r\n\r\n    function broadcasting(userRole) {\r\n    $rootScope.$broadcast('userRole', {\r\n      userRole: userRole,\r\n    });\r\n  }\r\n\r\n  \r\n};\r\n",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($rootScope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedStory\", function (event, args) {\n    console.log(args.str_sys_id);\n    console.log(args.criteria);\n  });\n};\n",
+            "value": "api.controller = function ($scope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n  broadcasting(c.data.userRole);\r\n\r\n    function broadcasting(userRole) {\r\n    $rootScope.$broadcast('userRole', {\r\n      userRole: userRole,\r\n    });\r\n  }\r\n\r\n  \r\n};\r\n",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"
@@ -307,13 +307,13 @@
             "sys_readonly": false,
             "type": "translated_field",
             "mandatory": true,
-            "displayValue": "TAP Story Display",
+            "displayValue": "TAP Overview Container",
             "readonly": false,
             "hint": "",
             "name": "name",
             "attributes": {},
             "choice": 0,
-            "value": "TAP Story Display",
+            "value": "TAP Overview Container",
             "max_length": 40,
             "ed": {
                 "name": "name"
@@ -362,7 +362,7 @@
             "sys_readonly": false,
             "type": "string",
             "mandatory": false,
-            "displayValue": "tap_story_display",
+            "displayValue": "tap_overview_container",
             "readonly": false,
             "hint": "Identifier for $sp.embedWidget()",
             "name": "id",
@@ -370,7 +370,7 @@
                 "edge_encryption_enabled": "true"
             },
             "choice": 0,
-            "value": "tap_story_display",
+            "value": "tap_overview_container",
             "max_length": 40,
             "ed": {
                 "name": "id"
