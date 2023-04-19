@@ -2,12 +2,12 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "9fab0a65db16e9107758240a1396198f6247985964bd01511d452f968a73c88743d029eb"
+        "g_ck": "d0df57fc1b1629101ddefc851a4bcb151978223b6e36af8bd7930dd970a8c744ae272a8a"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
-    "name": "TAP Story Display",
-    "sys_id": "d492a039dbce2d507758240a13961942",
+    "name": "TAP Overview Module List",
+    "sys_id": "74e88c85dbf96d107758240a13961932",
     "widget": {
         "template": {
             "sys_mandatory": false,
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "<div class=\"well well-lg\" >\n  <div ng-bind-html=\"criteria\"></div>\n</div>",
+            "displayValue": "<div class=\"panel panel-default\">\n\t<div class=\"panel-body\">\n\t\t<h4>Current Class Modules</h4>\n\t\t<ul class=\"list-group\">\n\t\t\t<li ng-class=\"module.selected ? 'list-group-item active' : 'list-group-item'\"\n          ng-repeat=\"module in c.data.moduleList\"\n\t\t\t\t\tng-click='selectedModule(module.mod_sys_id)'>{{module.name}}</li>\n\t\t</ul>\n\t</div>\n</div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "<div class=\"well well-lg\" >\n  <div ng-bind-html=\"criteria\"></div>\n</div>",
+            "value": "<div class=\"panel panel-default\">\n\t<div class=\"panel-body\">\n\t\t<h4>Current Class Modules</h4>\n\t\t<ul class=\"list-group\">\n\t\t\t<li ng-class=\"module.selected ? 'list-group-item active' : 'list-group-item'\"\n          ng-repeat=\"module in c.data.moduleList\"\n\t\t\t\t\tng-click='selectedModule(module.mod_sys_id)'>{{module.name}}</li>\n\t\t</ul>\n\t</div>\n</div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -37,13 +37,13 @@
             "sys_readonly": false,
             "type": "css",
             "mandatory": false,
-            "displayValue": "",
+            "displayValue": ".list-group-background {\n    background-color: $primary;\n    color: white;\n}\n\n.list-group-item:hover {\n   background-color: #efe9f2;\n}\n.active:hover {\n   background-color: #efe9f2;\n  color:#FA51E0;\n}",
             "readonly": false,
             "hint": "",
             "name": "css",
             "attributes": {},
             "choice": 0,
-            "value": "",
+            "value": ".list-group-background {\n    background-color: $primary;\n    color: white;\n}\n\n.list-group-item:hover {\n   background-color: #efe9f2;\n}\n.active:hover {\n   background-color: #efe9f2;\n  color:#FA51E0;\n}",
             "max_length": 8000,
             "ed": {
                 "name": "css"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function() {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n\r\n})();",
+            "displayValue": "(function () {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\tdata.moduleList = [];\n\n\tif (input && input.action === \"loadClass\") {\n\t\tmoduleList(input.sys_id);\n\t}\n\n\tfunction moduleList(classID) {\n\t\tvar moduleInstGR = new GlideRecordSecure(\"x_adsr_tap_m2m_module_instance\");\n\t\tmoduleInstGR.addQuery(\"x_adsr_tap_class\", classID);\n\t\tmoduleInstGR.query();\n\t\twhile (moduleInstGR.next()) {\n\t\t\tvar moduleObj = {\n\t\t\t\tmod_sys_id_inst: moduleInstGR.getDisplayValue(\"sys_id\"),\n\t\t\t\tname: moduleInstGR.getDisplayValue(\"x_adsr_tap_module\"),\n\t\t\t\tmod_sys_id: moduleInstGR.x_adsr_tap_module.toString(),\n\t\t\t\tselected: false,\n\t\t\t};\n\t\t\tdata.moduleList.push(moduleObj);\n\t\t}\n\t}\n})();\n",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function() {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n\r\n})();",
+            "value": "(function () {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\tdata.moduleList = [];\n\n\tif (input && input.action === \"loadClass\") {\n\t\tmoduleList(input.sys_id);\n\t}\n\n\tfunction moduleList(classID) {\n\t\tvar moduleInstGR = new GlideRecordSecure(\"x_adsr_tap_m2m_module_instance\");\n\t\tmoduleInstGR.addQuery(\"x_adsr_tap_class\", classID);\n\t\tmoduleInstGR.query();\n\t\twhile (moduleInstGR.next()) {\n\t\t\tvar moduleObj = {\n\t\t\t\tmod_sys_id_inst: moduleInstGR.getDisplayValue(\"sys_id\"),\n\t\t\t\tname: moduleInstGR.getDisplayValue(\"x_adsr_tap_module\"),\n\t\t\t\tmod_sys_id: moduleInstGR.x_adsr_tap_module.toString(),\n\t\t\t\tselected: false,\n\t\t\t};\n\t\t\tdata.moduleList.push(moduleObj);\n\t\t}\n\t}\n})();\n",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($scope, $rootScope) {\n  /* widget controller */\n  var c = this;\n$scope.criteria = \"Please select a Story to view the details\";\n\n\n  $rootScope.$on(\"selectedStory\", function (event, args) {\n\t\t$scope.criteria = args.criteria;\n\t\tif(!args.criteria) {\n\t\t\t$scope.criteria = \"Please select a Story to view the details\";\n\t\t}\n\t\tif(args.criteria == \"\") {\n\t\t\t$scope.criteria = \"No Acceptance Criteria currently for this Story\";\n\t\t}\n\n  });\n\n\n};\n",
+            "displayValue": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\t\n\t$scope.showWidget = \"stories\";\n\t\n\tfor(var i = 0; i < c.data.moduleList.length; i++) {\n\t\tc.data.moduleList[i].selected = true;\n\t\tbreak;\n\t}\n\n  $scope.selectedModule = function (modID) {\n\t\tfor(var i = 0; i < c.data.moduleList.length; i++) {\n\t\t\tc.data.moduleList[i].selected = false;\n\t\tif(c.data.moduleList[i].mod_sys_id == modID) {\n\t\t\tc.data.moduleList[i].selected = true;\n\t\t}\n\t}\n    moduleBroadcast(modID);\n  };\n\n  $rootScope.$on(\"currentClass\", function (event, args) {\n    loadClass(args.sys_id, args.modifiable);\n  });\n\n  function loadClass(id, modifiable) {\n    c.data.sys_id = id;\n    c.data.modifiable = modifiable;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n      $scope.selectedModule(c.data.moduleList[0].mod_sys_id);\n    });\n  }\n\n  function moduleBroadcast(modID) {\n    $rootScope.$broadcast(\"selectedModule\", {\n      mod_sys_id: modID,\t\t\n    });\n  }\n};\n",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($scope, $rootScope) {\n  /* widget controller */\n  var c = this;\n$scope.criteria = \"Please select a Story to view the details\";\n\n\n  $rootScope.$on(\"selectedStory\", function (event, args) {\n\t\t$scope.criteria = args.criteria;\n\t\tif(!args.criteria) {\n\t\t\t$scope.criteria = \"Please select a Story to view the details\";\n\t\t}\n\t\tif(args.criteria == \"\") {\n\t\t\t$scope.criteria = \"No Acceptance Criteria currently for this Story\";\n\t\t}\n\n  });\n\n\n};\n",
+            "value": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\t\n\t$scope.showWidget = \"stories\";\n\t\n\tfor(var i = 0; i < c.data.moduleList.length; i++) {\n\t\tc.data.moduleList[i].selected = true;\n\t\tbreak;\n\t}\n\n  $scope.selectedModule = function (modID) {\n\t\tfor(var i = 0; i < c.data.moduleList.length; i++) {\n\t\t\tc.data.moduleList[i].selected = false;\n\t\tif(c.data.moduleList[i].mod_sys_id == modID) {\n\t\t\tc.data.moduleList[i].selected = true;\n\t\t}\n\t}\n    moduleBroadcast(modID);\n  };\n\n  $rootScope.$on(\"currentClass\", function (event, args) {\n    loadClass(args.sys_id, args.modifiable);\n  });\n\n  function loadClass(id, modifiable) {\n    c.data.sys_id = id;\n    c.data.modifiable = modifiable;\n    c.data.action = \"loadClass\";\n    c.server.update().then(function () {\n      c.data.action = undefined;\n      $scope.selectedModule(c.data.moduleList[0].mod_sys_id);\n    });\n  }\n\n  function moduleBroadcast(modID) {\n    $rootScope.$broadcast(\"selectedModule\", {\n      mod_sys_id: modID,\t\t\n    });\n  }\n};\n",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"
@@ -307,13 +307,13 @@
             "sys_readonly": false,
             "type": "translated_field",
             "mandatory": true,
-            "displayValue": "TAP Story Display",
+            "displayValue": "TAP Overview Module List",
             "readonly": false,
             "hint": "",
             "name": "name",
             "attributes": {},
             "choice": 0,
-            "value": "TAP Story Display",
+            "value": "TAP Overview Module List",
             "max_length": 40,
             "ed": {
                 "name": "name"
@@ -362,7 +362,7 @@
             "sys_readonly": false,
             "type": "string",
             "mandatory": false,
-            "displayValue": "tap_story_display",
+            "displayValue": "tap_index_module_list",
             "readonly": false,
             "hint": "Identifier for $sp.embedWidget()",
             "name": "id",
@@ -370,7 +370,7 @@
                 "edge_encryption_enabled": "true"
             },
             "choice": 0,
-            "value": "tap_story_display",
+            "value": "tap_index_module_list",
             "max_length": 40,
             "ed": {
                 "name": "id"

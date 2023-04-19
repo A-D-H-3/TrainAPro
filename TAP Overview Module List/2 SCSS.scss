@@ -1,0 +1,12 @@
+.list-group-background {
+    background-color: $primary;
+    color: white;
+}
+
+.list-group-item:hover {
+   background-color: #efe9f2;
+}
+.active:hover {
+   background-color: #efe9f2;
+  color:#FA51E0;
+}

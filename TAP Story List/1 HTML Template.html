@@ -1,12 +1,39 @@
 <div class="list-group" ng-if="c.data.storyList.length != 0" ng-repeat="story in c.data.storyList">
-  <li class="list-group-item" ng-click='selectedStory(story.str_sys_id, story.criteria)'>
-    {{story.name}}</li>
+  <li ng-class="story.selected ? 'list-group-item active' : 'list-group-item hover'"
+    ng-click='selectedStory(story.str_sys_id, story.criteria)'>
+    {{story.name}}
+    <div class="content">
+      <div class="fadedbox">
+        <div class="title text">{{story.desc}}</div>
+      </div>
+    </div>
+  </li>
 </div>
 
 <div ng-if=" !c.data.storyList && !loading">
-  <h2>${No Stories Associated to this module please visit the class page for more details}</h2>
-</div>
+  <h2 class="no-story">${No Stories Associated to this module please visit the class page for more details}</h2>
+ 
+    
 
-<!-- <img src="https://picsum.photos/id/1022/200/200">
-<img src="https://picsum.photos/id/1015/200/200" style="--color:#4ECDC4">
-<img src="https://picsum.photos/id/1016/200/200" style="--color:#FF6B6B"> -->
+  <div class="coffee-position">
+    <div class="coffee-container">
+      <div class="coffee-header">
+        <div class="coffee-header__buttons coffee-header__button-one"></div>
+        <div class="coffee-header__buttons coffee-header__button-two"></div>
+        <div class="coffee-header__display"></div>
+        <div class="coffee-header__details"></div>
+      </div>
+      <div class="coffee-medium">
+        <div class="coffe-medium__exit"></div>
+        <div class="coffee-medium__arm"></div>
+        <div class="coffee-medium__liquid"></div>
+        <div class="coffee-medium__smoke coffee-medium__smoke-one"></div>
+        <div class="coffee-medium__smoke coffee-medium__smoke-two"></div>
+        <div class="coffee-medium__smoke coffee-medium__smoke-three"></div>
+        <div class="coffee-medium__smoke coffee-medium__smoke-for"></div>
+        <div class="coffee-medium__cup"></div>
+      </div>
+      <div class="coffee-footer"></div>
+    </div>
+
+  </div>

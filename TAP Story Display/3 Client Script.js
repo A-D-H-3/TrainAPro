@@ -1,13 +1,19 @@
-api.controller = function ($rootScope) {
+api.controller = function ($scope, $rootScope) {
   /* widget controller */
   var c = this;
+$scope.criteria = "Please select a Story to view the details";
+
 
   $rootScope.$on("selectedStory", function (event, args) {
-    console.log(args.str_sys_id);
-    console.log(args.criteria);
+		$scope.criteria = args.criteria;
+		if(!args.criteria) {
+			$scope.criteria = "Please select a Story to view the details";
+		}
+		if(args.criteria == "") {
+			$scope.criteria = "No Acceptance Criteria currently for this Story";
+		}
+
   });
 
-  displayStr = function () {
-    console.log("test");
-  };
+
 };
