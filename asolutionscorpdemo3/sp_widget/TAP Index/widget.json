@@ -1,0 +1,426 @@
+{
+    "instance": {
+        "name": "asolutionscorpdemo3",
+        "url": "https://asolutionscorpdemo3.service-now.com",
+        "g_ck": "bf60c2171bd3e1101ddefc851a4bcbf3c61cb9d5cd757ad6f0c2b6390ffb060eb11bbe2f"
+    },
+    "action": "saveWidget",
+    "tableName": "sp_widget",
+    "name": "TAP Index",
+    "sys_id": "46bc0f1b1b8ee1101ddefc851a4bcbb1",
+    "widget": {
+        "template": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Body HTML template",
+            "sys_readonly": false,
+            "type": "html_template",
+            "mandatory": false,
+            "displayValue": "<div class=\"hero\">\r\n    <div class=\"content\">\r\n        <h2>Train-A-Pro</h2>\r\n        <p>Welcome to Train-A-Pro your use all for training your team</p>\r\n       <button class=\"button-new\" ng-click=\"goToOverviewPage()\" role=\"button\">${Overview}</button>\r\n      <button class=\"button-new\" ng-click=\"goToClassPage()\" role=\"button\">${Details}</button>\r\n    </div>\r\n    <div class=\"waves\"></div>\r\n</div>\r\n",
+            "readonly": false,
+            "hint": "",
+            "name": "template",
+            "attributes": {},
+            "choice": 0,
+            "value": "<div class=\"hero\">\r\n    <div class=\"content\">\r\n        <h2>Train-A-Pro</h2>\r\n        <p>Welcome to Train-A-Pro your use all for training your team</p>\r\n       <button class=\"button-new\" ng-click=\"goToOverviewPage()\" role=\"button\">${Overview}</button>\r\n      <button class=\"button-new\" ng-click=\"goToClassPage()\" role=\"button\">${Details}</button>\r\n    </div>\r\n    <div class=\"waves\"></div>\r\n</div>\r\n",
+            "max_length": 65000,
+            "ed": {
+                "name": "template"
+            }
+        },
+        "css": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "CSS",
+            "sys_readonly": false,
+            "type": "css",
+            "mandatory": false,
+            "displayValue": ":root {\n    --color: #880074;\n  }\n\n.button-new {\n\tcolor: #880074;\n\t//color: #1E0A25;\n  background: white;\n}\n  \n  .content {\n    padding: 0px;\n    max-width: 600px;\n    margin: 0 auto;\n    z-index:1;\n    /*padding: 0 20px;*/\n  }\n  \n  .hero {\n    //margin-top:-5px;\n    padding-top: 0px;\n    position: relative;\n    background: #ff142c;\n    color: white;\n    height: 94vh;\n    display: flex;\n    align-items: center;\n    overflow: hidden;\n    padding-bottom: 0px;\n    margin-bottom: 0px;\n    bottom: 0px;\n  }\n  \n  .hero h2 {\n    position: relative;\n    z-index: 2;\n    font-size: 7rem;\n    margin: 0 0 10px;\n    line-height: 1;\n    color: rgba(255, 255, 255, 0.9);\n  }\n  \n  .hero p {\n    position: relative;\n    z-index: 2;\n    font-size: 3rem;\n    color: rgba(255, 255, 255, 0.5);\n    line-height: 1.4;\n  }\n  \n  /* ========================= */\n  \n  .waves {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: 150px;\n    background-color: var(--color);\n    transition: 500ms;\n  }\n  \n  .waves::before,\n  .waves::after {\n    content: '';\n    position: absolute;\n    width: 300vw;\n    height: 300vw;\n    top: -70vw;\n    left: 50%;\n    transform: translate(-50%, -75%);\n  }\n  \n  .waves::before {\n    border-radius: 80vh;\n    background: #880074;\n    animation: waves 10s linear infinite;\n  }\n  \n  .waves::after {\n    border-radius: 80vh;\n    background: rgba(51, 51, 51, 0.5);\n    animation: waves 16s linear infinite;\n  }\n  \n  @keyframes waves {\n    0% {\n      transform: translate(-50%, -75%) rotate(0deg);\n    }\n    \n    100% {\n      transform: translate(-50%, -75%) rotate(360deg);\n    }\n  }\n  ",
+            "readonly": false,
+            "hint": "",
+            "name": "css",
+            "attributes": {},
+            "choice": 0,
+            "value": ":root {\n    --color: #880074;\n  }\n\n.button-new {\n\tcolor: #880074;\n\t//color: #1E0A25;\n  background: white;\n}\n  \n  .content {\n    padding: 0px;\n    max-width: 600px;\n    margin: 0 auto;\n    z-index:1;\n    /*padding: 0 20px;*/\n  }\n  \n  .hero {\n    //margin-top:-5px;\n    padding-top: 0px;\n    position: relative;\n    background: #ff142c;\n    color: white;\n    height: 94vh;\n    display: flex;\n    align-items: center;\n    overflow: hidden;\n    padding-bottom: 0px;\n    margin-bottom: 0px;\n    bottom: 0px;\n  }\n  \n  .hero h2 {\n    position: relative;\n    z-index: 2;\n    font-size: 7rem;\n    margin: 0 0 10px;\n    line-height: 1;\n    color: rgba(255, 255, 255, 0.9);\n  }\n  \n  .hero p {\n    position: relative;\n    z-index: 2;\n    font-size: 3rem;\n    color: rgba(255, 255, 255, 0.5);\n    line-height: 1.4;\n  }\n  \n  /* ========================= */\n  \n  .waves {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    height: 150px;\n    background-color: var(--color);\n    transition: 500ms;\n  }\n  \n  .waves::before,\n  .waves::after {\n    content: '';\n    position: absolute;\n    width: 300vw;\n    height: 300vw;\n    top: -70vw;\n    left: 50%;\n    transform: translate(-50%, -75%);\n  }\n  \n  .waves::before {\n    border-radius: 80vh;\n    background: #880074;\n    animation: waves 10s linear infinite;\n  }\n  \n  .waves::after {\n    border-radius: 80vh;\n    background: rgba(51, 51, 51, 0.5);\n    animation: waves 16s linear infinite;\n  }\n  \n  @keyframes waves {\n    0% {\n      transform: translate(-50%, -75%) rotate(0deg);\n    }\n    \n    100% {\n      transform: translate(-50%, -75%) rotate(360deg);\n    }\n  }\n  ",
+            "max_length": 8000,
+            "ed": {
+                "name": "css"
+            }
+        },
+        "roles": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "Roles",
+            "sys_readonly": false,
+            "type": "user_roles",
+            "mandatory": false,
+            "displayValue": "x_adsr_tap.trainee",
+            "readonly": false,
+            "hint": "",
+            "name": "roles",
+            "attributes": {
+                "no_truncate": "true",
+                "update_exempt": "true",
+                "record_watcher_blacklist": "true"
+            },
+            "choice": 0,
+            "value": "x_adsr_tap.trainee",
+            "max_length": 255,
+            "ed": {
+                "name": "roles"
+            }
+        },
+        "link": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Link",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "readonly": false,
+            "hint": "",
+            "name": "link",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "max_length": 65000,
+            "ed": {
+                "name": "link"
+            }
+        },
+        "description": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Description",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "Defines what the widget does",
+            "name": "description",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 300,
+            "ed": {
+                "name": "description"
+            }
+        },
+        "demo_data": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Demo data",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "demo_data",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "demo_data"
+            }
+        },
+        "option_schema": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Option schema",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "option_schema",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "option_schema"
+            }
+        },
+        "script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Server script",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "(function() {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n\r\n})();",
+            "readonly": false,
+            "hint": "",
+            "name": "script",
+            "attributes": {},
+            "choice": 0,
+            "value": "(function() {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n\r\n})();",
+            "max_length": 65000,
+            "ed": {
+                "name": "script"
+            }
+        },
+        "has_preview": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Has preview",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Defines whether preview data is available",
+            "name": "has_preview",
+            "attributes": {},
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "has_preview"
+            }
+        },
+        "public": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Public",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Widget publicly available to unauthenticated users",
+            "name": "public",
+            "attributes": {
+                "update_exempt": "true"
+            },
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "public"
+            }
+        },
+        "docs": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "update_synch": "true",
+                "synch_attachments": "true"
+            },
+            "dbType": 12,
+            "label": "Docs",
+            "sys_readonly": false,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sp_documentation",
+            "reference_type": "table",
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "docs",
+            "attributes": {
+                "encode_utf8": "false"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": false,
+            "choice": 0,
+            "value": "",
+            "max_length": 32,
+            "ed": {
+                "reference": "sp_documentation",
+                "searchField": "title",
+                "defaultOperator": "STARTSWITH",
+                "name": "docs"
+            }
+        },
+        "client_script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Client controller",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "api.controller=function($window, $scope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n  $scope.goToOverviewPage = function() {\r\n    $window.location.href = \"training?id=tap_overview\";\r\n  };\r\n  $scope.goToClassPage = function() {\r\n    $window.location.href = \"training?id=tap_class_information\";\r\n  };\r\n};",
+            "readonly": false,
+            "hint": "",
+            "name": "client_script",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "api.controller=function($window, $scope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n  $scope.goToOverviewPage = function() {\r\n    $window.location.href = \"training?id=tap_overview\";\r\n  };\r\n  $scope.goToClassPage = function() {\r\n    $window.location.href = \"training?id=tap_class_information\";\r\n  };\r\n};",
+            "max_length": 8000,
+            "ed": {
+                "name": "client_script"
+            }
+        },
+        "data_table": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "default_value": "sp_instance",
+            "label": "Data table",
+            "sys_readonly": false,
+            "type": "table_name",
+            "mandatory": true,
+            "displayValue": "sp_instance",
+            "readonly": false,
+            "hint": "",
+            "name": "data_table",
+            "attributes": {
+                "base_table": "sp_instance",
+                "base_start": "true"
+            },
+            "choice": 0,
+            "choices": [],
+            "value": "sp_instance",
+            "max_length": 80,
+            "ed": {
+                "name": "data_table"
+            }
+        },
+        "name": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "label": "Name",
+            "sys_readonly": false,
+            "type": "translated_field",
+            "mandatory": true,
+            "displayValue": "TAP Index",
+            "readonly": false,
+            "hint": "",
+            "name": "name",
+            "attributes": {},
+            "choice": 0,
+            "value": "TAP Index",
+            "max_length": 40,
+            "ed": {
+                "name": "name"
+            }
+        },
+        "sys_scope": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "metadata_link_exempt": "true"
+            },
+            "dbType": 12,
+            "label": "Application",
+            "sys_readonly": true,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sys_app",
+            "reference_type": "table",
+            "displayValue": "Train-A-Pro",
+            "readonly": true,
+            "hint": "Application containing this record",
+            "name": "sys_scope",
+            "attributes": {
+                "encode_utf8": "false",
+                "list_force_default": "true",
+                "readonly_clickthrough": "true",
+                "ignore_filter_on_new": "true"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": true,
+            "choice": 0,
+            "value": "96b6f27bdb9561107758240a1396190c",
+            "max_length": 32,
+            "ed": {
+                "reference": "sys_scope",
+                "searchField": "name",
+                "defaultOperator": "STARTSWITH",
+                "name": "sys_scope"
+            }
+        },
+        "id": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "ID",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "tap_index",
+            "readonly": false,
+            "hint": "Identifier for $sp.embedWidget()",
+            "name": "id",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "tap_index",
+            "max_length": 40,
+            "ed": {
+                "name": "id"
+            }
+        },
+        "field_list": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dependentField": "data_table",
+            "dbType": -1,
+            "label": "Fields",
+            "sys_readonly": false,
+            "type": "field_list",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "field_list",
+            "attributes": {
+                "is_multi_text": "false"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 1000,
+            "ed": {
+                "dependent_value": "sp_instance",
+                "name": "field_list"
+            }
+        },
+        "controller_as": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "controllerAs",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "c",
+            "readonly": false,
+            "hint": "Identifier name for a reference to the controller in the directive's scope",
+            "name": "controller_as",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "c",
+            "max_length": 100,
+            "ed": {
+                "name": "controller_as"
+            }
+        }
+    }
+}

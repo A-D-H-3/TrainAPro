@@ -2,7 +2,7 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "88a0d444dbd2a5107758240a139619bdb1748da97ab15d35e3dd5b5c4cca4cd3e26321e2"
+        "g_ck": "8efc0019dba769107758240a13961952dc206f3b2ca41ad3c3f5854072d5892875ab8b65"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "<div class=\"padded\">\n<div class=\"col-md-3\">\n    <sp-widget widget=\"c.data.classList\"></sp-widget>\n\t\t<sp-widget widget=\"c.data.trainerTile\"></sp-widget>\n</div>\n<div class=\"col-md-6\">\n  <sp-widget widget=\"data.moduleList\"></sp-widget>\n  <sp-widget widget=\"data.storyList\"></sp-widget>\n</div>\n<div class=\"col-md-3\">\n  <sp-widget widget=\"data.storyDisp\"></sp-widget>\n</div>\n</div>",
+            "displayValue": "<div ng-class=\"darkMode ? 'lightMode' : 'padded'\">\n  <div class=\"col-md-12\">\n    <div class=\"toggle\">\n      Toggle Dark/Light Mode: \n    </div>\n    <label class=\"switch\">\n      <input type=\"checkbox\" ng-model=\"darkMode\">\n      <span class=\"slider round\"></span>\n    </label>\n  </div>\n  <div class=\"col-md-3\">\n    <sp-widget widget=\"c.data.classList\"></sp-widget>\n    <sp-widget widget=\"c.data.trainerTile\"></sp-widget>\n  </div>\n  <div class=\"col-md-6\">\n    <sp-widget widget=\"data.moduleList\"></sp-widget>\n    <!--<sp-widget class=\"story-li\" widget=\"data.storyList\"></sp-widget>-->\n  </div>\n  <div class=\"col-md-3\">\n    <sp-widget widget=\"data.history\"></sp-widget> \n  </div></div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "<div class=\"padded\">\n<div class=\"col-md-3\">\n    <sp-widget widget=\"c.data.classList\"></sp-widget>\n\t\t<sp-widget widget=\"c.data.trainerTile\"></sp-widget>\n</div>\n<div class=\"col-md-6\">\n  <sp-widget widget=\"data.moduleList\"></sp-widget>\n  <sp-widget widget=\"data.storyList\"></sp-widget>\n</div>\n<div class=\"col-md-3\">\n  <sp-widget widget=\"data.storyDisp\"></sp-widget>\n</div>\n</div>",
+            "value": "<div ng-class=\"darkMode ? 'lightMode' : 'padded'\">\n  <!--<div class=\"col-md-12\">\n    <div class=\"toggle\">\n      Toggle Dark/Light Mode: \n    </div>\n    <label class=\"switch\">\n      <input type=\"checkbox\" ng-model=\"darkMode\">\n      <span class=\"slider round\"></span>\n    </label> -->\n  </div>\n  <div class=\"col-md-3\">\n    <sp-widget widget=\"c.data.classList\"></sp-widget>\n    <sp-widget widget=\"c.data.trainerTile\"></sp-widget>\n  </div>\n  <div class=\"col-md-6\">\n    <sp-widget widget=\"data.moduleList\"></sp-widget>\n    <!--<sp-widget class=\"story-li\" widget=\"data.storyList\"></sp-widget>-->\n  </div>\n  <div class=\"col-md-3\">\n    <sp-widget widget=\"data.history\"></sp-widget> \n  </div></div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -37,13 +37,13 @@
             "sys_readonly": false,
             "type": "css",
             "mandatory": false,
-            "displayValue": ".padded {\n  padding-top:10px;\n}",
+            "displayValue": ".padded {\n  padding-top: 30px;\n  height: 100vh;\n}\n\n.lightMode {\n  background-color:white;\n  padding-top: 30px;\n  height: 100vh;\n}\n\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n\n.switch input { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #F8F8FF;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: #880074;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n\n.slider:after {\n\tbackground-color: #F8F8FF;\n}\n\ninput:checked + .slider {\n  background-color: rgba(30,10,37,0.9);\n}\n\ninput:focus + .slider {\n  box-shadow: 0 0 1px rgba(30,10,37,0.9);\n}\n\ninput:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  -ms-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\n  border-radius: 34px;\n}\n\n.slider.round:before {\n  border-radius: 50%;\n}  ",
             "readonly": false,
             "hint": "",
             "name": "css",
             "attributes": {},
             "choice": 0,
-            "value": ".padded {\n  padding-top:10px;\n}\n\n#story-li {\n  --color: #8a9b0f; /* the border color */\n  --border: 10px; /* the border thickness*/\n  --offset: 20px; /* control the offset*/\n  --gap: 5px; /* the gap on hover */\n\n  --_c: var(--color) var(--border), #0000 0 calc(100% - var(--border)),\n    var(--color) 0;\n  --_o: calc(3 * var(--offset));\n  padding: calc(var(--gap) + var(--border))\n    calc(var(--gap) + var(--border) + var(--offset))\n    calc(var(--gap) + var(--border) + var(--offset))\n    calc(var(--gap) + var(--border));\n  background: linear-gradient(var(--_c)) var(--_o) var(--_o),\n    linear-gradient(90deg, var(--_c)) var(--_o) var(--_o);\n  background-size: calc(100% - var(--_o)) calc(100% - var(--_o));\n  background-repeat: no-repeat;\n  filter: grayscale(0.4);\n  transition: 0.5s;\n  cursor: pointer;\n}\n#story-li:hover {\n  background-position: 0px 0px;\n  background-size: calc(100% - var(--offset)) calc(100% - var(--offset));\n  filter: grayscale(0);\n}\n\nbody {\n  background: #e8e9ba;\n  display: grid;\n  gap: 40px;\n  height: 100vh;\n  margin: 0;\n  grid-auto-flow: column;\n  place-content: center;\n}\n",
+            "value": ".padded {\n  padding-top: 30px;\n  height: 100vh;\n}\n\n.lightMode {\n  background-color:white;\n  padding-top: 30px;\n  height: 100vh;\n}\n\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n\n.switch input { \n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #F8F8FF;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: #880074;\n  -webkit-transition: .4s;\n  transition: .4s;\n}\n\n.slider:after {\n\tbackground-color: #F8F8FF;\n}\n\ninput:checked + .slider {\n  background-color: rgba(30,10,37,0.9);\n}\n\ninput:focus + .slider {\n  box-shadow: 0 0 1px rgba(30,10,37,0.9);\n}\n\ninput:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  -ms-transform: translateX(26px);\n  transform: translateX(26px);\n}\n\n/* Rounded sliders */\n.slider.round {\n  border-radius: 34px;\n}\n\n.slider.round:before {\n  border-radius: 50%;\n}  ",
             "max_length": 8000,
             "ed": {
                 "name": "css"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function() {\r\n    data.classList = $sp.getWidget(\"tap_class_list\", {});\r\n    data.trainerTile = $sp.getWidget(\"tap_trainer_tile\", {});\r\n    data.classInfo = $sp.getWidget('tap_class_details', {});\r\n    data.storyList = $sp.getWidget('tap_story_list', {});\r\n    data.moduleList = $sp.getWidget('tap_index_module_list', {});\r\n    data.storyDisp = $sp.getWidget('tap_story_display', {});\r\n\r\n    data.loggedInUser = gs.getUser().getFirstName();\r\n\r\n\tdata.userRole = new x_adsr_tap.userRoleUtility().privileges();\r\n})();",
+            "displayValue": "(function () {\n  data.classList = $sp.getWidget(\"tap_class_list\", {});\n  data.trainerTile = $sp.getWidget(\"tap_trainer_tile\", {});\n  data.classInfo = $sp.getWidget(\"tap_class_details\", {});\n  data.storyList = $sp.getWidget(\"tap_story_list\", {});\n  data.moduleList = $sp.getWidget(\"tap_index_module_list\", {});\n  data.history = $sp.getWidget(\"tap_history\", {});\n\t\n\n  data.loggedInUser = gs.getUser().getFirstName();\n\n  data.userRole = new x_adsr_tap.userRoleUtility().privileges();\n})();\n",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function() {\r\n    data.classList = $sp.getWidget(\"tap_class_list\", {});\r\n    data.trainerTile = $sp.getWidget(\"tap_trainer_tile\", {});\r\n    data.classInfo = $sp.getWidget('tap_class_details', {});\r\n    data.storyList = $sp.getWidget('tap_story_list', {});\r\n    data.moduleList = $sp.getWidget('tap_index_module_list', {});\r\n    data.storyDisp = $sp.getWidget('tap_story_display', {});\r\n\r\n    data.loggedInUser = gs.getUser().getFirstName();\r\n\r\n\tdata.userRole = new x_adsr_tap.userRoleUtility().privileges();\r\n})();",
+            "value": "(function () {\n  data.classList = $sp.getWidget(\"tap_class_list\", {});\n  data.trainerTile = $sp.getWidget(\"tap_trainer_tile\", {});\n  data.classInfo = $sp.getWidget(\"tap_class_details\", {});\n  data.storyList = $sp.getWidget(\"tap_story_list\", {});\n  data.moduleList = $sp.getWidget(\"tap_index_module_list\", {});\n  data.history = $sp.getWidget(\"tap_history\", {});\n\t\n\n  data.loggedInUser = gs.getUser().getFirstName();\n\n  data.userRole = new x_adsr_tap.userRoleUtility().privileges();\n})();\n",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($scope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n  broadcasting(c.data.userRole);\r\n\r\n    function broadcasting(userRole) {\r\n    $rootScope.$broadcast('userRole', {\r\n      userRole: userRole,\r\n    });\r\n  }\r\n\r\n  \r\n};\r\n",
+            "displayValue": "api.controller = function ($scope, $rootScope) {\n\t\n\t$scope.darkMode = false;\n  /* widget controller */\n  var c = this;\n  broadcasting(c.data.userRole);\n    function broadcasting(userRole) {\n    $rootScope.$broadcast('userRole', {\n      userRole: userRole,\n    });\n  }\n};\n",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($scope) {\r\n  /* widget controller */\r\n  var c = this;\r\n\r\n  broadcasting(c.data.userRole);\r\n\r\n    function broadcasting(userRole) {\r\n    $rootScope.$broadcast('userRole', {\r\n      userRole: userRole,\r\n    });\r\n  }\r\n\r\n  \r\n};\r\n",
+            "value": "api.controller = function ($scope, $rootScope) {\n\t\n\t$scope.darkMode = false;\n  /* widget controller */\n  var c = this;\n  broadcasting(c.data.userRole);\n    function broadcasting(userRole) {\n    $rootScope.$broadcast('userRole', {\n      userRole: userRole,\n    });\n  }\n};\n",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"
@@ -337,7 +337,6 @@
             "hint": "Application containing this record",
             "name": "sys_scope",
             "attributes": {
-                "encode_utf8": "false",
                 "list_force_default": "true",
                 "readonly_clickthrough": "true",
                 "ignore_filter_on_new": "true"

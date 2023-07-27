@@ -2,6 +2,9 @@
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
 
+  data.coffee = $sp.getWidget("coffee_maker", {});
+  data.infoDisplay = $sp.getWidget("tap_info_display", {});
+
   if (input && input.action === "loadStories") {
     storyList(input.sys_id);
   }

@@ -1,3 +1,40 @@
-<div class="well well-lg" >
-  <div ng-bind-html="criteria"></div>
-</div>
+<!-- <div>
+<h2>
+  {{name}}
+</h2>
+<div ng-bind-html="criteria"></div>
+</div> -->
+
+
+<!-- begin page -->
+<section class="page">
+  <div class="wrapper">
+    <input type="checkbox" id="checkbox">
+    <label for="checkbox" class="open">
+      <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </label>
+
+    <!-- begin content -->
+    <section class="content">
+      <label for="checkbox" class="close"><span>Close Me!</span></label>
+
+      <div class="logo">
+        <div class="logo__line"></div>
+        <div class="logo__line"></div>
+        <div class="logo__line"></div>
+      </div>
+
+      <h1>
+        {{name}}
+        </h2>
+        <div ng-bind-html="criteria"></div>
+    </section>
+    <!-- end content -->
+
+  </div>
+</section>
+<!-- end page -->

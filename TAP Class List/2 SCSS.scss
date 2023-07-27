@@ -1,0 +1,16 @@
+.list-group-spacing {
+    margin: 1em;
+}
+
+.list-group-background {
+    background-color: $primary;
+    color: white;
+}
+
+.list-group-item:hover {
+   background-color: #efe9f2;
+}
+.active:hover, .list-group-item:hover {
+   background-color: #efe9f2;
+  color:black;
+}

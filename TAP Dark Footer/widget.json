@@ -1,0 +1,278 @@
+{
+    "instance": {
+        "name": "asolutionscorpdemo3",
+        "url": "https://asolutionscorpdemo3.service-now.com",
+        "g_ck": "b4ac11a01b50fd101ddefc851a4bcb720282ae936a3b831d5e3998be3714f4e6f0a7a4ca"
+    },
+    "action": "saveWidget",
+    "tableName": "sp_widget",
+    "name": "TAP Dark Footer",
+    "sys_id": "bd7f9c95dbe769107758240a13961907",
+    "widget": {
+        "template": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Body HTML template",
+            "sys_readonly": false,
+            "type": "html_template",
+            "mandatory": false,
+            "displayValue": "<div class=\"sample-footer\" role=\"contentinfo\">\n  <h3 ng-if=\"c.data.darkTheme == 'true'\">\n    Dark theme active:\n    <label class=\"toggle\">\n      <input type=\"checkbox\"\n             ng-model=\"c.data.darkTheme == 'true'\" \n             ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n  <h3 ng-if=\"c.data.darkTheme == 'false'\">\n    Light theme active:\n\n\n    <label class=\"toggle\">\n      <input type=\"checkbox\"\n             ng-model=\"c.data.darkTheme == 'true'\" \n             ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n</div>",
+            "readonly": false,
+            "hint": "",
+            "name": "template",
+            "attributes": {},
+            "choice": 0,
+            "value": "<div class=\"sample-footer\" role=\"contentinfo\">\n  <h3 ng-if=\"c.data.darkTheme == 'true'\">\n    Dark theme active:\n    <label class=\"toggle\">\n      <input type=\"checkbox\"\n             ng-model=\"c.data.darkTheme == 'true'\" \n             ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n  <h3 ng-if=\"c.data.darkTheme == 'false'\">\n    Light theme active:\n\n\n    <label class=\"toggle\">\n      <input type=\"checkbox\"\n             ng-model=\"c.data.darkTheme == 'true'\" \n             ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n</div>",
+            "max_length": 65000,
+            "ed": {
+                "name": "template"
+            }
+        },
+        "has_preview": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Has preview",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Defines whether preview data is available",
+            "name": "has_preview",
+            "attributes": {},
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "has_preview"
+            }
+        },
+        "css": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "CSS",
+            "sys_readonly": false,
+            "type": "css",
+            "mandatory": false,
+            "displayValue": "*{\n  margin: 0px; \n  font-family: \"Poppins\", sans-serif;\n  color: #880074;\n}  \n\n.sample-footer {\n  background-color: #1E0A25;\n  padding: 10px;\n}\n\n\n/* <========== ***Toggle Switch*** ==========> */\n\n.toggle {\n  display: inline-block;\n  position: relative;\n  width: 60px;\n  height: 34px;\n}\n\n.toggle input {\n  display: none;\n}\n\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: white;\n  transition: .4s;\n  border-radius: 34px;\n}\n\n.slider:after {\n  background-color: #1E0A25;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: #880074;\n  transition: .4s;\n  border-radius: 50%;\n}\n\ninput:checked + .slider:before {\n  transform: translateX(26px);\n  background-color: #1E0A25;\n}",
+            "readonly": false,
+            "hint": "",
+            "name": "css",
+            "attributes": {},
+            "choice": 0,
+            "value": "*{\n  margin: 0px; \n  font-family: \"Poppins\", sans-serif;\n  color: #880074;\n}  \n\n.sample-footer {\n  background-color: #1E0A25;\n  padding: 10px;\n}\n\n\n/* <========== ***Toggle Switch*** ==========> */\n\n.toggle {\n  display: inline-block;\n  position: relative;\n  width: 60px;\n  height: 34px;\n}\n\n.toggle input {\n  display: none;\n}\n\n.slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: white;\n  transition: .4s;\n  border-radius: 34px;\n}\n\n.slider:after {\n  background-color: #1E0A25;\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: #880074;\n  transition: .4s;\n  border-radius: 50%;\n}\n\ninput:checked + .slider:before {\n  transform: translateX(26px);\n  background-color: #1E0A25;\n}",
+            "max_length": 8000,
+            "ed": {
+                "name": "css"
+            }
+        },
+        "static": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Static",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Static headers and footers do not refresh theme data on each page change - keep checked for a potential performance improvement",
+            "name": "static",
+            "attributes": {},
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "static"
+            }
+        },
+        "public": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Public",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Widget publicly available to unauthenticated users",
+            "name": "public",
+            "attributes": {
+                "update_exempt": "true"
+            },
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "public"
+            }
+        },
+        "client_script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Client controller",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "api.controller = function($scope, $window) {\n\t// widget controller\n\tvar c = this;\n\n\t\n\t$scope.toggleDarkTheme = function() {\n\t\tif(c.data.darkTheme == \"false\"){\n\t\t\tc.data.darkTheme = \"true\"\n\t\t} else {\n\t\t\tc.data.darkTheme = \"false\"\n\t\t}\n\t\tc.data.action = \"toggleDarkTheme\";\n\t\tc.server.update().then(function(){\n\t\t\tc.data.action = undefined;\n\t\t});\n\t\t$window.location.reload()\n\t}\n\t\n};                            ",
+            "readonly": false,
+            "hint": "",
+            "name": "client_script",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "api.controller = function($scope, $window) {\n\t// widget controller\n\tvar c = this;\n\n\t\n\t$scope.toggleDarkTheme = function() {\n\t\tif(c.data.darkTheme == \"false\"){\n\t\t\tc.data.darkTheme = \"true\"\n\t\t} else {\n\t\t\tc.data.darkTheme = \"false\"\n\t\t}\n\t\tc.data.action = \"toggleDarkTheme\";\n\t\tc.server.update().then(function(){\n\t\t\tc.data.action = undefined;\n\t\t});\n\t\t$window.location.reload()\n\t}\n\t\n};                            ",
+            "max_length": 8000,
+            "ed": {
+                "name": "client_script"
+            }
+        },
+        "name": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "label": "Name",
+            "sys_readonly": false,
+            "type": "translated_field",
+            "mandatory": true,
+            "displayValue": "TAP Dark Footer",
+            "readonly": false,
+            "hint": "",
+            "name": "name",
+            "attributes": {},
+            "choice": 0,
+            "value": "TAP Dark Footer",
+            "max_length": 40,
+            "ed": {
+                "name": "name"
+            }
+        },
+        "link": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Link",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "function link(scope, element, attrs, controller) {\r  \r}",
+            "readonly": false,
+            "hint": "",
+            "name": "link",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "function link(scope, element, attrs, controller) {\r  \r}",
+            "max_length": 65000,
+            "ed": {
+                "name": "link"
+            }
+        },
+        "sys_scope": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "metadata_link_exempt": "true"
+            },
+            "dbType": 12,
+            "label": "Application",
+            "sys_readonly": true,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sys_app",
+            "reference_type": "table",
+            "displayValue": "Train-A-Pro",
+            "readonly": true,
+            "hint": "Application containing this record",
+            "name": "sys_scope",
+            "attributes": {
+                "encode_utf8": "false",
+                "list_force_default": "true",
+                "readonly_clickthrough": "true",
+                "ignore_filter_on_new": "true"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": true,
+            "choice": 0,
+            "value": "96b6f27bdb9561107758240a1396190c",
+            "max_length": 32,
+            "ed": {
+                "reference": "sys_scope",
+                "searchField": "name",
+                "defaultOperator": "STARTSWITH",
+                "name": "sys_scope"
+            }
+        },
+        "id": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "ID",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "tap_dark_footer",
+            "readonly": false,
+            "hint": "Identifier for $sp.embedWidget()",
+            "name": "id",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "tap_dark_footer",
+            "max_length": 40,
+            "ed": {
+                "name": "id"
+            }
+        },
+        "script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Server script",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "(function() {\n\tdata.time = new GlideDateTime().getDisplayValue();\n\n\tvar userID = gs.getUserID();\n\n\tif(!input){\n\t\tonLoad(false)\n\t}\n\n\tif(input && input.action == \"toggleDarkTheme\"){\n\n\t\tonLoad(true);\n\t}\n\n\tfunction onLoad(loaded){\n\n\t\tvar userThemeGR = new GlideRecordSecure(\"x_adsr_tap_dark_theme\");\t\n\t\tuserThemeGR.addQuery(\"user\", userID);\n\t\tuserThemeGR.query();\n\t\tif(!userThemeGR.hasNext()){\n\t\t\tuserThemeGR.initialize();\n\t\t\tuserThemeGR.dark_mode = data.darkTheme;\n\t\t\tuserThemeGR.user = userID;\n\t\t\tuserThemeGR.insert()\n\t\t} else {\n\t\t\twhile (userThemeGR.next()) {\n\t\t\t\tif(!loaded){\n\t\t\t\t\tconsole.log(userThemeGR.dark_mode + \"bryan you are here\");\n\t\t\t\t\tdata.darkTheme = userThemeGR.dark_mode.toString();\n\t\t\t\t} else {\n\t\t\t\t\tuserThemeGR.dark_mode = input.darkTheme;\n\t\t\t\t\tuserThemeGR.update();\n\t\t\t\t\tdata.darkTheme = input.darkTheme;\n\t\t\t\t}\n\n\t\t\t}\n\n\t\t}\n\n\t}\n\t\tfunction backgroundColor (options) {\n    options.styles.footer = \"background-color: #1E0A25\";\n    return options;\n}\n\n})();",
+            "readonly": false,
+            "hint": "",
+            "name": "script",
+            "attributes": {},
+            "choice": 0,
+            "value": "(function() {\n\tdata.time = new GlideDateTime().getDisplayValue();\n\n\tvar userID = gs.getUserID();\n\n\tif(!input){\n\t\tonLoad(false)\n\t}\n\n\tif(input && input.action == \"toggleDarkTheme\"){\n\n\t\tonLoad(true);\n\t}\n\n\tfunction onLoad(loaded){\n\n\t\tvar userThemeGR = new GlideRecordSecure(\"x_adsr_tap_dark_theme\");\t\n\t\tuserThemeGR.addQuery(\"user\", userID);\n\t\tuserThemeGR.query();\n\t\tif(!userThemeGR.hasNext()){\n\t\t\tuserThemeGR.initialize();\n\t\t\tuserThemeGR.dark_mode = data.darkTheme;\n\t\t\tuserThemeGR.user = userID;\n\t\t\tuserThemeGR.insert()\n\t\t} else {\n\t\t\twhile (userThemeGR.next()) {\n\t\t\t\tif(!loaded){\n\t\t\t\t\tconsole.log(userThemeGR.dark_mode + \"bryan you are here\");\n\t\t\t\t\tdata.darkTheme = userThemeGR.dark_mode.toString();\n\t\t\t\t} else {\n\t\t\t\t\tuserThemeGR.dark_mode = input.darkTheme;\n\t\t\t\t\tuserThemeGR.update();\n\t\t\t\t\tdata.darkTheme = input.darkTheme;\n\t\t\t\t}\n\n\t\t\t}\n\n\t\t}\n\n\t}\n\t\tfunction backgroundColor (options) {\n    options.styles.footer = \"background-color: #1E0A25\";\n    return options;\n}\n\n})();",
+            "max_length": 65000,
+            "ed": {
+                "name": "script"
+            }
+        },
+        "controller_as": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "controllerAs",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "c",
+            "readonly": false,
+            "hint": "Identifier name for a reference to the controller in the directive's scope",
+            "name": "controller_as",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "c",
+            "max_length": 100,
+            "ed": {
+                "name": "controller_as"
+            }
+        }
+    }
+}

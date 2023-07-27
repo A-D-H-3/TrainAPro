@@ -1,13 +1,21 @@
-<div class="padded">
+<div ng-class="darkMode ? 'lightMode' : 'padded'">
+  <!--<div class="col-md-12">
+    <div class="toggle">
+      Toggle Dark/Light Mode: 
+    </div>
+    <label class="switch">
+      <input type="checkbox" ng-model="darkMode">
+      <span class="slider round"></span>
+    </label> -->
   <div class="col-md-3">
     <sp-widget widget="c.data.classList"></sp-widget>
     <sp-widget widget="c.data.trainerTile"></sp-widget>
   </div>
   <div class="col-md-6">
     <sp-widget widget="data.moduleList"></sp-widget>
-    <sp-widget class="story-li" widget="data.storyList"></sp-widget>
+    <!--<sp-widget class="story-li" widget="data.storyList"></sp-widget>-->
   </div>
   <div class="col-md-3">
-    <sp-widget widget="data.storyDisp"></sp-widget>
+    <sp-widget widget="data.history"></sp-widget>
   </div>
 </div>

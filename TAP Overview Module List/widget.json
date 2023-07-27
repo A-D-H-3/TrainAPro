@@ -2,7 +2,7 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "d0df57fc1b1629101ddefc851a4bcb151978223b6e36af8bd7930dd970a8c744ae272a8a"
+        "g_ck": "7ce24e49dbd761107758240a1396193cf64816cd348a9f10610bde2f661a92ddd88ad2ae"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "<div class=\"panel panel-default\">\n\t<div class=\"panel-body\">\n\t\t<h4>Current Class Modules</h4>\n\t\t<ul class=\"list-group\">\n\t\t\t<li ng-class=\"module.selected ? 'list-group-item active' : 'list-group-item'\"\n          ng-repeat=\"module in c.data.moduleList\"\n\t\t\t\t\tng-click='selectedModule(module.mod_sys_id)'>{{module.name}}</li>\n\t\t</ul>\n\t</div>\n</div>",
+            "displayValue": "<div class=\"panel panel-default\">\n\t<div class=\"panel-body\">\n\t\t<h4>Current Class Modules</h4>\n    <div class=\"col-md-6\"      \n       \tng-repeat=\"module in c.data.moduleList\"\n\t\t\t \tng-click='selectedModule(module.mod_sys_id)'>\n       <div class=\"panel panel-default hover\">\n      \t<div ng-class=\"module.selected ? 'panel-body list-group-background active' : 'panel-body'\">\n\t\t\t<h4>\n            {{module.name}}\n    \t\t\t</h4>\n    \t\t<p>\n      {{module.description}}\n    </p>\n      \t</div>\n      </div>\n\t</div>\n    </div>\n </div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "<div class=\"panel panel-default\">\n\t<div class=\"panel-body\">\n\t\t<h4>Current Class Modules</h4>\n\t\t<ul class=\"list-group\">\n\t\t\t<li ng-class=\"module.selected ? 'list-group-item active' : 'list-group-item'\"\n          ng-repeat=\"module in c.data.moduleList\"\n\t\t\t\t\tng-click='selectedModule(module.mod_sys_id)'>{{module.name}}</li>\n\t\t</ul>\n\t</div>\n</div>",
+            "value": "<div class=\"panel panel-default\">\n\t<div class=\"panel-body\">\n\t\t<h4>Current Class Modules</h4>\n    <div class=\"col-md-6\"      \n       \tng-repeat=\"module in c.data.moduleList\"\n\t\t\t \tng-click='selectedModule(module.mod_sys_id)'>\n       <div class=\"panel panel-default hover\">\n      \t<div ng-class=\"module.selected ? 'panel-body list-group-background active' : 'panel-body'\">\n\t\t\t<h4>\n            {{module.name}}\n    \t\t\t</h4>\n    \t\t<p>\n      {{module.description}}\n    </p>\n      \t</div>\n      </div>\n\t</div>\n    </div>\n </div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -37,13 +37,13 @@
             "sys_readonly": false,
             "type": "css",
             "mandatory": false,
-            "displayValue": ".list-group-background {\n    background-color: $primary;\n    color: white;\n}\n\n.list-group-item:hover {\n   background-color: #efe9f2;\n}\n.active:hover {\n   background-color: #efe9f2;\n  color:#FA51E0;\n}",
+            "displayValue": ".list-group-background {\r\n    background-color: $brand-primary;\r\n    color: white;\r\n}\r\n\r\n.list-group-item:hover {\r\n   background-color: #efe9f2;\r\n}\r\n.active:hover {\r\n   background-color: #efe9f2;\r\n  color:#FA51E0;\r\n}\r\n\r\n",
             "readonly": false,
             "hint": "",
             "name": "css",
             "attributes": {},
             "choice": 0,
-            "value": ".list-group-background {\n    background-color: $primary;\n    color: white;\n}\n\n.list-group-item:hover {\n   background-color: #efe9f2;\n}\n.active:hover {\n   background-color: #efe9f2;\n  color:#FA51E0;\n}",
+            "value": ".list-group-background {\r\n    background-color: $brand-primary;\r\n    color: white;\r\n}\r\n\r\n.list-group-item:hover {\r\n   background-color: #efe9f2;\r\n}\r\n.active:hover {\r\n   background-color: #efe9f2;\r\n  color:#FA51E0;\r\n}\r\n\r\n",
             "max_length": 8000,
             "ed": {
                 "name": "css"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function () {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\tdata.moduleList = [];\n\n\tif (input && input.action === \"loadClass\") {\n\t\tmoduleList(input.sys_id);\n\t}\n\n\tfunction moduleList(classID) {\n\t\tvar moduleInstGR = new GlideRecordSecure(\"x_adsr_tap_m2m_module_instance\");\n\t\tmoduleInstGR.addQuery(\"x_adsr_tap_class\", classID);\n\t\tmoduleInstGR.query();\n\t\twhile (moduleInstGR.next()) {\n\t\t\tvar moduleObj = {\n\t\t\t\tmod_sys_id_inst: moduleInstGR.getDisplayValue(\"sys_id\"),\n\t\t\t\tname: moduleInstGR.getDisplayValue(\"x_adsr_tap_module\"),\n\t\t\t\tmod_sys_id: moduleInstGR.x_adsr_tap_module.toString(),\n\t\t\t\tselected: false,\n\t\t\t};\n\t\t\tdata.moduleList.push(moduleObj);\n\t\t}\n\t}\n})();\n",
+            "displayValue": "(function () {\r\n\tdata.moduleList = [];\r\n\r\n\tif (input && input.action === \"loadClass\") {\r\n\t\tmoduleList(input.sys_id);\r\n\t}\r\n\r\n\tfunction moduleList(classID) {\r\n\t\tvar moduleInstGR = new GlideRecordSecure(\"x_adsr_tap_m2m_module_instance\");\r\n\t\tmoduleInstGR.addQuery(\"x_adsr_tap_class\", classID);\r\n\t\tmoduleInstGR.query();\r\n\t\twhile (moduleInstGR.next()) {\r\n\t\t\tvar moduleObj = {\r\n\t\t\t\tmod_sys_id_inst: moduleInstGR.getDisplayValue(\"sys_id\"),\r\n\t\t\t\tname: moduleInstGR.getDisplayValue(\"x_adsr_tap_module\"),\r\n\t\t\t\tmod_sys_id: moduleInstGR.x_adsr_tap_module.toString(),\r\n\t\t\t\tselected: false,\r\n\t\t\t\tdescription: moduleInstGR.x_adsr_tap_module.description.getDisplayValue(),\r\n\t\t\t};\r\n\t\t\tdata.moduleList.push(moduleObj);\r\n\t\t}\r\n\t}\r\n})();\r\n",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function () {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\tdata.moduleList = [];\n\n\tif (input && input.action === \"loadClass\") {\n\t\tmoduleList(input.sys_id);\n\t}\n\n\tfunction moduleList(classID) {\n\t\tvar moduleInstGR = new GlideRecordSecure(\"x_adsr_tap_m2m_module_instance\");\n\t\tmoduleInstGR.addQuery(\"x_adsr_tap_class\", classID);\n\t\tmoduleInstGR.query();\n\t\twhile (moduleInstGR.next()) {\n\t\t\tvar moduleObj = {\n\t\t\t\tmod_sys_id_inst: moduleInstGR.getDisplayValue(\"sys_id\"),\n\t\t\t\tname: moduleInstGR.getDisplayValue(\"x_adsr_tap_module\"),\n\t\t\t\tmod_sys_id: moduleInstGR.x_adsr_tap_module.toString(),\n\t\t\t\tselected: false,\n\t\t\t};\n\t\t\tdata.moduleList.push(moduleObj);\n\t\t}\n\t}\n})();\n",
+            "value": "(function () {\r\n\tdata.moduleList = [];\r\n\r\n\tif (input && input.action === \"loadClass\") {\r\n\t\tmoduleList(input.sys_id);\r\n\t}\r\n\r\n\tfunction moduleList(classID) {\r\n\t\tvar moduleInstGR = new GlideRecordSecure(\"x_adsr_tap_m2m_module_instance\");\r\n\t\tmoduleInstGR.addQuery(\"x_adsr_tap_class\", classID);\r\n\t\tmoduleInstGR.query();\r\n\t\twhile (moduleInstGR.next()) {\r\n\t\t\tvar moduleObj = {\r\n\t\t\t\tmod_sys_id_inst: moduleInstGR.getDisplayValue(\"sys_id\"),\r\n\t\t\t\tname: moduleInstGR.getDisplayValue(\"x_adsr_tap_module\"),\r\n\t\t\t\tmod_sys_id: moduleInstGR.x_adsr_tap_module.toString(),\r\n\t\t\t\tselected: false,\r\n\t\t\t\tdescription: moduleInstGR.x_adsr_tap_module.description.getDisplayValue(),\r\n\t\t\t};\r\n\t\t\tdata.moduleList.push(moduleObj);\r\n\t\t}\r\n\t}\r\n})();\r\n",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -337,7 +337,6 @@
             "hint": "Application containing this record",
             "name": "sys_scope",
             "attributes": {
-                "encode_utf8": "false",
                 "list_force_default": "true",
                 "readonly_clickthrough": "true",
                 "ignore_filter_on_new": "true"

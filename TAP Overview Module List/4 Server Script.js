@@ -1,6 +1,4 @@
 (function () {
-	/* populate the 'data' object */
-	/* e.g., data.table = $sp.getValue('table'); */
 	data.moduleList = [];
 
 	if (input && input.action === "loadClass") {
@@ -17,6 +15,7 @@
 				name: moduleInstGR.getDisplayValue("x_adsr_tap_module"),
 				mod_sys_id: moduleInstGR.x_adsr_tap_module.toString(),
 				selected: false,
+				description: moduleInstGR.x_adsr_tap_module.description.getDisplayValue(),
 			};
 			data.moduleList.push(moduleObj);
 		}

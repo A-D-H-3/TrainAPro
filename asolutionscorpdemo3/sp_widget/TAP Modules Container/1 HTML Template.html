@@ -1,0 +1,28 @@
+<div class="col-md-12">
+<div class="page-header">
+  <h1>{{c.data.module.name}}<small>{{c.data.module.description}}</small></h1>
+</div>
+</div>
+<div class="col-md-3">
+  
+<div class="list-group">
+  <a href="#" class="list-group-item" ng-repeat="story in c.data.stories">
+    <h4 class="list-group-item-heading">{{story.name}}</h4>
+    <p class="list-group-item-text">{{story.description}}</p>
+  </a>
+</div>
+ </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+ 				 <div class="panel-body">
+    Story Info
+  		</div>
+</div>
+    </div>
+    <div class="col-md-3">
+       <div class="panel panel-default">
+  <div class="panel-body">
+    Add Edit Resources for this story here
+  </div>
+</div>
+    </div>

@@ -1,0 +1,426 @@
+{
+    "instance": {
+        "name": "asolutionscorpdemo3",
+        "url": "https://asolutionscorpdemo3.service-now.com",
+        "g_ck": "f8ea5cd41b4b65101ddefc851a4bcb15772f0cf1f8603a475c7e0ab3d9ea79aac0bc9cba"
+    },
+    "action": "saveWidget",
+    "tableName": "sp_widget",
+    "name": "TAP Info Display",
+    "sys_id": "cef76016db566d107758240a13961919",
+    "widget": {
+        "template": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Body HTML template",
+            "sys_readonly": false,
+            "type": "html_template",
+            "mandatory": false,
+            "displayValue": "<div>\n  <!-- your widget template -->\n  <section class=\"page\">\n    <div class=\"wrapper\">\n      <input type=\"checkbox\" id=\"checkbox\">\n      <label for=\"checkbox\" class=\"open\">\n        <div class=\"lines\">\n          <div class=\"line\"></div>\n          <div class=\"line\"></div>\n          <div class=\"line\"></div>\n        </div>\n      </label>\n\n      <!-- begin content -->\n      <section class=\"content\" id=\"info\">\n        <label for=\"checkbox\" class=\"close\" ng-click=\"openAnswer()\"><span>Answer Story</span></label>\n        <!-- <label for=\"checkbox\" class=\"go\"><span>Close Me!</span></label> -->\n\n        <div class=\"logo\" text=\"View Story\">\n\n          <div class=\"logo__line\"></div>\n          <div class=\"logo__line\"></div>\n          <div class=\"logo__line\"></div>\n        </div>\n        <h1>\n          <!--- Title of information displayed goes here --->\n          {{name}}\n        </h1>\n        <!--- Information displayed goes here --->\n        <div ng-bind-html=\"criteria\"></div>\n      </section>\n      <!-- end content -->\n\n    </div>\n  </section>\n</div>",
+            "readonly": false,
+            "hint": "",
+            "name": "template",
+            "attributes": {},
+            "choice": 0,
+            "value": "<div>\n  <!-- your widget template -->\n  <section class=\"page\">\n    <div class=\"wrapper\">\n      <input type=\"checkbox\" id=\"checkbox\">\n      <label for=\"checkbox\" class=\"open\">\n        <div class=\"lines\">\n          <div class=\"line\"></div>\n          <div class=\"line\"></div>\n          <div class=\"line\"></div>\n        </div>\n      </label>\n\n      <!-- begin content -->\n      <section class=\"content\" id=\"info\">\n        <label for=\"checkbox\" class=\"close\" ng-click=\"openAnswer()\"><span>Answer Story</span></label>\n        <!-- <label for=\"checkbox\" class=\"go\"><span>Close Me!</span></label> -->\n\n        <div class=\"logo\" text=\"View Story\">\n\n          <div class=\"logo__line\"></div>\n          <div class=\"logo__line\"></div>\n          <div class=\"logo__line\"></div>\n        </div>\n        <h1>\n          <!--- Title of information displayed goes here --->\n          {{name}}\n        </h1>\n        <!--- Information displayed goes here --->\n        <div ng-bind-html=\"criteria\"></div>\n      </section>\n      <!-- end content -->\n\n    </div>\n  </section>\n</div>",
+            "max_length": 65000,
+            "ed": {
+                "name": "template"
+            }
+        },
+        "css": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "CSS",
+            "sys_readonly": false,
+            "type": "css",
+            "mandatory": false,
+            "displayValue": "/*\n\t!!! CSS optimization warning !!!\n\n\tSome of CSS selectors in this exmaple are complex and must be rewritten:\n\t\t- input[type=\"checkbox\"]:checked ~ .content .logo .logo__line\n\t\t- etc...\n\tIt is advisable to avoid writing such styles.\n*/\n\n@import url(https://fonts.googleapis.com/css?family=Ubuntu);\n\n* {\n  margin: 0;\n  padding: 0;\n}\n\n::selection {\n  background: #ff55e6;\n  color: #fff;\n}\n\n.page {\n  position: relative;\n  width: 100%;\n  height: 75vh;\n  background: #880074;\n}\n\n.wrapper,\n.lines,\n.line,\n.open:after,\n.content {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n\ninput[type=\"checkbox\"] {\n  display: none;\n}\n\ninput[type=\"checkbox\"]:checked ~ label .lines .line:first-child {\n  transform: translate(-50%, -50%);\n  transition: transform 0.4s cubic-bezier(0.64, 0.57, 0.67, 1.53);\n}\n\ninput[type=\"checkbox\"]:checked ~ label .lines .line:last-child {\n  transform: translate(-50%, -50%);\n  transition: transform 0.4s cubic-bezier(0.64, 0.57, 0.67, 1.53);\n}\n\ninput[type=\"checkbox\"]:checked ~ label:after {\n  opacity: 0;\n  transform: translate(-50%, -50%) scale3d(1, 1, 1);\n  transition: all 0.5s cubic-bezier(0.64, 0.57, 0.67, 1.53);\n}\n\ninput[type=\"checkbox\"]:checked ~ .content {\n  transform: translate(-50%, -50%) scale3d(1, 1, 1);\n  transition: transform 0.5s 0.4s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    box-shadow 0.5s 0.7s;\n  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 20px 10px -15px rgba(0, 0, 0, 0.3);\n}\n\ninput[type=\"checkbox\"]:checked ~ .content .close {\n  transform: scale3d(1, 1, 1);\n  transition: transform 0.5s 0.7s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.5s 0.7s, background 0.3s, box-shadow 0.3s;\n  opacity: 1;\n}\n\ninput[type=\"checkbox\"]:checked ~ .content h1 {\n  transform: translate(0, 0);\n  transition: transform 0.5s 0.6s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.8s;\n  opacity: 1;\n}\n\ninput[type=\"checkbox\"]:checked ~ .content p {\n  transform: translate(0, 0);\n  transition: transform 0.5s 0.62s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.8s;\n  opacity: 0.5;\n}\n\ninput[type=\"checkbox\"]:checked ~ .content .logo .logo__line {\n  opacity: 1;\n  transform: translate(-50%, 0);\n  transition: transform 0.5s 0.7s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.8s;\n}\n\ninput[type=\"checkbox\"]:checked ~ .content .logo .logo__line:first-child {\n  opacity: 1;\n  transform: translate(calc(0% - 50% - 10px), 0);\n  transition: transform 0.5s 0.8s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.8s;\n}\n\ninput[type=\"checkbox\"]:checked ~ .content .logo .logo__line:last-child {\n  opacity: 1;\n  transform: translate(calc(0% - 50% + 10px), 0);\n  transition: transform 0.5s 0.85s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.8s;\n}\n\n.open {\n  display: block;\n  width: 30px;\n  height: 20px;\n  /* \tbackground: rgba(245, 245, 245, .3); */\n  cursor: pointer;\n}\n\n.open:after {\n //content: \"\";\n //width: 200px;\n  height: 200px;\n  background-color: rgba(245, 245, 245, 0.3);\n  border-radius: 50%;\n  opacity: 1;\n  transform: translate(-50%, -50%) scale3d(0, 0, 0);\n  transition: none;\n}\n\n.line {\n  width: 4px;\n  height: 30px;\n  background: rgba(245, 245, 245, 1);\n  border-radius: 5px;\n  transition: transform 0.4s 1s cubic-bezier(0.64, 0.57, 0.67, 1.53);\n}\n\n.line:first-child {\n  transform: translate(-15px, -50%);\n}\n\n.line:last-child {\n  transform: translate(11px, -50%);\n}\n\n.content {\n  width: 375px;\n  min-width: 200px;\n  height: 75vh;\n  background: rgba(255, 255, 255, 1);\n  border-radius: 10px;\n  transform: translate(-50%, -50%) scale3d(0, 0, 0);\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  color: #384055;\n  font: normal 16px/1 \"Ubuntu\", sans-serif;\n  text-align: center;\n  transition: transform 0.5s 0.5s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    box-shadow 0.5s 0.5s;\n}\n\n.content h1 {\n  padding-bottom: 20px;\n  font-size: 20px;\n  transition: transform 0.5s 0.02s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.5s;\n}\n\n.content p {\n  overflow-wrap: break-word;\n  line-height: 1.5;\n  opacity: 0.5;\n  font-size: 15px;\n  padding-bottom: 20px;\n  transition: transform 0.3s cubic-bezier(0.99, 0.04, 0.57, 1.31), opacity 0.5s;\n}\n\n.content h1,\n.content p {\n  transform: translate(0, 60px);\n  opacity: 0;\n  overflow-wrap: break-word;\n}\n\n.close {\n  position: absolute;\n  bottom: 30px;\n  background: #880074;\n  border-radius: 6px;\n  color: #fff;\n  padding: 15px 20px;\n  cursor: pointer;\n  font-weight: bolder;\n  opacity: 0;\n  transform: scale3d(0, 0, 0);\n  transition: transform 0.5s cubic-bezier(0.99, 0.04, 0.57, 1.31), opacity 0.5s,\n    box-shadow 0.3s;\n  box-shadow: 0 5px 10px -5px rgba(255, 98, 119, 1);\n  /* \tbox-shadow: 0 5px 10px -5px rgba(0, 0, 0, .5); */\n}\n\n.close:active {\n  box-shadow: 0 0px 10px -5px rgba(255, 98, 119, 1);\n  /* \tbox-shadow: 0 0px 10px -5px rgba(0, 0, 0, .5); */\n}\n\n.close:hover {\n  animation: bounce 0.5s;\n}\n\n.close span {\n  display: inline-block;\n  position: relative;\n}\n\n.close:hover span {\n  animation: bounce 0.5s 0.03s;\n}\n\n.logo {\n  position: absolute;\n  top: 20px;\n  left: 50%;\n  transform: translate(-50%, 0);\n}\n\n.logo__line {\n  position: absolute;\n  top: 15px;\n  left: 50%;\n  transform: translate(-50%, -20px);\n  width: 4px;\n  height: 22px;\n  border-radius: 6px;\n  background: #ff55e6;\n  opacity: 0;\n  transition: transform 0.5s 0.1s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.1s;\n}\n\n.logo__line:first-child {\n  transform: translate(calc(0% - 50% - 10px), -20px);\n  transition: transform 0.5s 0.2s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.2s;\n}\n\n.logo__line:last-child {\n  transform: translate(calc(0% - 50% + 10px), -20px);\n  transition: transform 0.5s 0.3s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.3s;\n}\n\n@keyframes bounce {\n  0% {\n    transform: translate(0px, 0px);\n  }\n  40% {\n    transform: translate(0px, -12px);\n  }\n  80% {\n    transform: translate(0px, 2px);\n  }\n  100% {\n    transform: translate(0px, 0px);\n  }\n}\n",
+            "readonly": false,
+            "hint": "",
+            "name": "css",
+            "attributes": {},
+            "choice": 0,
+            "value": "/*\n\t!!! CSS optimization warning !!!\n\n\tSome of CSS selectors in this exmaple are complex and must be rewritten:\n\t\t- input[type=\"checkbox\"]:checked ~ .content .logo .logo__line\n\t\t- etc...\n\tIt is advisable to avoid writing such styles.\n*/\n\n@import url(https://fonts.googleapis.com/css?family=Ubuntu);\n\n* {\n  margin: 0;\n  padding: 0;\n}\n\n::selection {\n  background: #ff55e6;\n  color: #fff;\n}\n\n.page {\n  position: relative;\n  width: 100%;\n  height: 75vh;\n  background: #880074;\n}\n\n.wrapper,\n.lines,\n.line,\n.open:after,\n.content {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n\ninput[type=\"checkbox\"] {\n  display: none;\n}\n\ninput[type=\"checkbox\"]:checked ~ label .lines .line:first-child {\n  transform: translate(-50%, -50%);\n  transition: transform 0.4s cubic-bezier(0.64, 0.57, 0.67, 1.53);\n}\n\ninput[type=\"checkbox\"]:checked ~ label .lines .line:last-child {\n  transform: translate(-50%, -50%);\n  transition: transform 0.4s cubic-bezier(0.64, 0.57, 0.67, 1.53);\n}\n\ninput[type=\"checkbox\"]:checked ~ label:after {\n  opacity: 0;\n  transform: translate(-50%, -50%) scale3d(1, 1, 1);\n  transition: all 0.5s cubic-bezier(0.64, 0.57, 0.67, 1.53);\n}\n\ninput[type=\"checkbox\"]:checked ~ .content {\n  transform: translate(-50%, -50%) scale3d(1, 1, 1);\n  transition: transform 0.5s 0.4s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    box-shadow 0.5s 0.7s;\n  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 20px 10px -15px rgba(0, 0, 0, 0.3);\n}\n\ninput[type=\"checkbox\"]:checked ~ .content .close {\n  transform: scale3d(1, 1, 1);\n  transition: transform 0.5s 0.7s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.5s 0.7s, background 0.3s, box-shadow 0.3s;\n  opacity: 1;\n}\n\ninput[type=\"checkbox\"]:checked ~ .content h1 {\n  transform: translate(0, 0);\n  transition: transform 0.5s 0.6s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.8s;\n  opacity: 1;\n}\n\ninput[type=\"checkbox\"]:checked ~ .content p {\n  transform: translate(0, 0);\n  transition: transform 0.5s 0.62s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.8s;\n  opacity: 0.5;\n}\n\ninput[type=\"checkbox\"]:checked ~ .content .logo .logo__line {\n  opacity: 1;\n  transform: translate(-50%, 0);\n  transition: transform 0.5s 0.7s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.8s;\n}\n\ninput[type=\"checkbox\"]:checked ~ .content .logo .logo__line:first-child {\n  opacity: 1;\n  transform: translate(calc(0% - 50% - 10px), 0);\n  transition: transform 0.5s 0.8s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.8s;\n}\n\ninput[type=\"checkbox\"]:checked ~ .content .logo .logo__line:last-child {\n  opacity: 1;\n  transform: translate(calc(0% - 50% + 10px), 0);\n  transition: transform 0.5s 0.85s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.8s;\n}\n\n.open {\n  display: block;\n  width: 30px;\n  height: 20px;\n  /* \tbackground: rgba(245, 245, 245, .3); */\n  cursor: pointer;\n}\n\n.open:after {\n //content: \"\";\n //width: 200px;\n  height: 200px;\n  background-color: rgba(245, 245, 245, 0.3);\n  border-radius: 50%;\n  opacity: 1;\n  transform: translate(-50%, -50%) scale3d(0, 0, 0);\n  transition: none;\n}\n\n.line {\n  width: 4px;\n  height: 30px;\n  background: rgba(245, 245, 245, 1);\n  border-radius: 5px;\n  transition: transform 0.4s 1s cubic-bezier(0.64, 0.57, 0.67, 1.53);\n}\n\n.line:first-child {\n  transform: translate(-15px, -50%);\n}\n\n.line:last-child {\n  transform: translate(11px, -50%);\n}\n\n.content {\n  width: 375px;\n  min-width: 200px;\n  height: 75vh;\n  background: rgba(255, 255, 255, 1);\n  border-radius: 10px;\n  transform: translate(-50%, -50%) scale3d(0, 0, 0);\n  padding: 5px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  color: #384055;\n  font: normal 16px/1 \"Ubuntu\", sans-serif;\n  text-align: center;\n  transition: transform 0.5s 0.5s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    box-shadow 0.5s 0.5s;\n}\n\n.content h1 {\n  padding-bottom: 20px;\n  font-size: 20px;\n  transition: transform 0.5s 0.02s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.5s;\n}\n\n.content p {\n  overflow-wrap: break-word;\n  line-height: 1.5;\n  opacity: 0.5;\n  font-size: 15px;\n  padding-bottom: 20px;\n  transition: transform 0.3s cubic-bezier(0.99, 0.04, 0.57, 1.31), opacity 0.5s;\n}\n\n.content h1,\n.content p {\n  transform: translate(0, 60px);\n  opacity: 0;\n  overflow-wrap: break-word;\n}\n\n.close {\n  position: absolute;\n  bottom: 30px;\n  background: #880074;\n  border-radius: 6px;\n  color: #fff;\n  padding: 15px 20px;\n  cursor: pointer;\n  font-weight: bolder;\n  opacity: 0;\n  transform: scale3d(0, 0, 0);\n  transition: transform 0.5s cubic-bezier(0.99, 0.04, 0.57, 1.31), opacity 0.5s,\n    box-shadow 0.3s;\n  box-shadow: 0 5px 10px -5px rgba(255, 98, 119, 1);\n  /* \tbox-shadow: 0 5px 10px -5px rgba(0, 0, 0, .5); */\n}\n\n.close:active {\n  box-shadow: 0 0px 10px -5px rgba(255, 98, 119, 1);\n  /* \tbox-shadow: 0 0px 10px -5px rgba(0, 0, 0, .5); */\n}\n\n.close:hover {\n  animation: bounce 0.5s;\n}\n\n.close span {\n  display: inline-block;\n  position: relative;\n}\n\n.close:hover span {\n  animation: bounce 0.5s 0.03s;\n}\n\n.logo {\n  position: absolute;\n  top: 20px;\n  left: 50%;\n  transform: translate(-50%, 0);\n}\n\n.logo__line {\n  position: absolute;\n  top: 15px;\n  left: 50%;\n  transform: translate(-50%, -20px);\n  width: 4px;\n  height: 22px;\n  border-radius: 6px;\n  background: #ff55e6;\n  opacity: 0;\n  transition: transform 0.5s 0.1s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.1s;\n}\n\n.logo__line:first-child {\n  transform: translate(calc(0% - 50% - 10px), -20px);\n  transition: transform 0.5s 0.2s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.2s;\n}\n\n.logo__line:last-child {\n  transform: translate(calc(0% - 50% + 10px), -20px);\n  transition: transform 0.5s 0.3s cubic-bezier(0.99, 0.04, 0.57, 1.31),\n    opacity 0.8s 0.3s;\n}\n\n@keyframes bounce {\n  0% {\n    transform: translate(0px, 0px);\n  }\n  40% {\n    transform: translate(0px, -12px);\n  }\n  80% {\n    transform: translate(0px, 2px);\n  }\n  100% {\n    transform: translate(0px, 0px);\n  }\n}\n",
+            "max_length": 8000,
+            "ed": {
+                "name": "css"
+            }
+        },
+        "roles": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "Roles",
+            "sys_readonly": false,
+            "type": "user_roles",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "roles",
+            "attributes": {
+                "no_truncate": "true",
+                "update_exempt": "true",
+                "record_watcher_blacklist": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 255,
+            "ed": {
+                "name": "roles"
+            }
+        },
+        "link": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Link",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "readonly": false,
+            "hint": "",
+            "name": "link",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "function link(scope, element, attrs, controller) {\r\n  \r\n}",
+            "max_length": 65000,
+            "ed": {
+                "name": "link"
+            }
+        },
+        "description": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Description",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "Defines what the widget does",
+            "name": "description",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 300,
+            "ed": {
+                "name": "description"
+            }
+        },
+        "demo_data": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Demo data",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "demo_data",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "demo_data"
+            }
+        },
+        "option_schema": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Option schema",
+            "sys_readonly": false,
+            "type": "json",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "option_schema",
+            "attributes": {},
+            "choice": 0,
+            "value": "",
+            "max_length": 8000,
+            "ed": {
+                "name": "option_schema"
+            }
+        },
+        "script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Server script",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "(function () {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n})();\r\n",
+            "readonly": false,
+            "hint": "",
+            "name": "script",
+            "attributes": {},
+            "choice": 0,
+            "value": "(function () {\r\n  /* populate the 'data' object */\r\n  /* e.g., data.table = $sp.getValue('table'); */\r\n})();\r\n",
+            "max_length": 65000,
+            "ed": {
+                "name": "script"
+            }
+        },
+        "has_preview": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Has preview",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Defines whether preview data is available",
+            "name": "has_preview",
+            "attributes": {},
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "has_preview"
+            }
+        },
+        "public": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -7,
+            "label": "Public",
+            "sys_readonly": false,
+            "type": "boolean",
+            "mandatory": false,
+            "displayValue": "false",
+            "readonly": false,
+            "hint": "Widget publicly available to unauthenticated users",
+            "name": "public",
+            "attributes": {
+                "update_exempt": "true"
+            },
+            "choice": 0,
+            "value": "false",
+            "max_length": 40,
+            "ed": {
+                "name": "public"
+            }
+        },
+        "docs": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "update_synch": "true",
+                "synch_attachments": "true"
+            },
+            "dbType": 12,
+            "label": "Docs",
+            "sys_readonly": false,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sp_documentation",
+            "reference_type": "table",
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "docs",
+            "attributes": {
+                "encode_utf8": "false"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": false,
+            "choice": 0,
+            "value": "",
+            "max_length": 32,
+            "ed": {
+                "reference": "sp_documentation",
+                "searchField": "title",
+                "defaultOperator": "STARTSWITH",
+                "name": "docs"
+            }
+        },
+        "client_script": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": -1,
+            "label": "Client controller",
+            "sys_readonly": false,
+            "type": "script",
+            "mandatory": false,
+            "displayValue": "api.controller = function ($scope, $rootScope, spModal) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedStory\", function (event, args) {\n    $scope.name = args.name;\n\t\t$scope.strID = args.str_id;\n    $scope.criteria = args.criteria;\n    if (!args.criteria) {\n      $scope.criteria = \"Please select a Story to view the details\";\n    } else if (args.criteria == \"\") {\n      $scope.criteria = \"No Acceptance Criteria currently for this Story\";\n    }\n\n  });\n\n  // $scope.criteria = \"Please select a Story to view the details\";\n\t\n\t$scope.openAnswer = function(){\n\t\tspModal.open({\n        title: $scope.name,\n        footerStyle: { display: \"none\" },\n\t\t\t\tsize: \"lg\",\n        widget:\"tap_answer_modal\",\n        widgetInput:{\n          sys_id:$scope.strID,\n        }\n      }).then(function(){\n        console.log(\"Widget Dissmissed\")\n      })\n\t}\n\n};\n",
+            "readonly": false,
+            "hint": "",
+            "name": "client_script",
+            "attributes": {
+                "client_script": "true"
+            },
+            "choice": 0,
+            "value": "api.controller = function ($scope, $rootScope, spModal) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedStory\", function (event, args) {\n    $scope.name = args.name;\n\t\t$scope.strID = args.str_id;\n    $scope.criteria = args.criteria;\n    if (!args.criteria) {\n      $scope.criteria = \"Please select a Story to view the details\";\n    } else if (args.criteria == \"\") {\n      $scope.criteria = \"No Acceptance Criteria currently for this Story\";\n    }\n\n  });\n\n  // $scope.criteria = \"Please select a Story to view the details\";\n\t\n\t$scope.openAnswer = function(){\n\t\tspModal.open({\n        title: $scope.name,\n        footerStyle: { display: \"none\" },\n\t\t\t\tsize: \"lg\",\n        widget:\"tap_answer_modal\",\n        widgetInput:{\n          sys_id:$scope.strID,\n        }\n      }).then(function(){\n        console.log(\"Widget Dissmissed\")\n      })\n\t}\n\n};\n",
+            "max_length": 8000,
+            "ed": {
+                "name": "client_script"
+            }
+        },
+        "data_table": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "default_value": "sp_instance",
+            "label": "Data table",
+            "sys_readonly": false,
+            "type": "table_name",
+            "mandatory": true,
+            "displayValue": "sp_instance",
+            "readonly": false,
+            "hint": "",
+            "name": "data_table",
+            "attributes": {
+                "base_table": "sp_instance",
+                "base_start": "true"
+            },
+            "choice": 0,
+            "choices": [],
+            "value": "sp_instance",
+            "max_length": 80,
+            "ed": {
+                "name": "data_table"
+            }
+        },
+        "name": {
+            "sys_mandatory": true,
+            "visible": true,
+            "dbType": 12,
+            "label": "Name",
+            "sys_readonly": false,
+            "type": "translated_field",
+            "mandatory": true,
+            "displayValue": "TAP Info Display",
+            "readonly": false,
+            "hint": "",
+            "name": "name",
+            "attributes": {},
+            "choice": 0,
+            "value": "TAP Info Display",
+            "max_length": 40,
+            "ed": {
+                "name": "name"
+            }
+        },
+        "sys_scope": {
+            "sys_mandatory": false,
+            "visible": true,
+            "table_attributes": {
+                "metadata_link_exempt": "true"
+            },
+            "dbType": 12,
+            "label": "Application",
+            "sys_readonly": true,
+            "type": "reference",
+            "mandatory": false,
+            "refTable": "sys_app",
+            "reference_type": "table",
+            "displayValue": "Train-A-Pro",
+            "readonly": true,
+            "hint": "Application containing this record",
+            "name": "sys_scope",
+            "attributes": {
+                "encode_utf8": "false",
+                "list_force_default": "true",
+                "readonly_clickthrough": "true",
+                "ignore_filter_on_new": "true"
+            },
+            "reference_key": "sys_id",
+            "readonlyClickthrough": true,
+            "choice": 0,
+            "value": "96b6f27bdb9561107758240a1396190c",
+            "max_length": 32,
+            "ed": {
+                "reference": "sys_scope",
+                "searchField": "name",
+                "defaultOperator": "STARTSWITH",
+                "name": "sys_scope"
+            }
+        },
+        "id": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "ID",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "tap_info_display",
+            "readonly": false,
+            "hint": "Identifier for $sp.embedWidget()",
+            "name": "id",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "tap_info_display",
+            "max_length": 40,
+            "ed": {
+                "name": "id"
+            }
+        },
+        "field_list": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dependentField": "data_table",
+            "dbType": -1,
+            "label": "Fields",
+            "sys_readonly": false,
+            "type": "field_list",
+            "mandatory": false,
+            "displayValue": "",
+            "readonly": false,
+            "hint": "",
+            "name": "field_list",
+            "attributes": {
+                "is_multi_text": "false"
+            },
+            "choice": 0,
+            "value": "",
+            "max_length": 1000,
+            "ed": {
+                "dependent_value": "sp_instance",
+                "name": "field_list"
+            }
+        },
+        "controller_as": {
+            "sys_mandatory": false,
+            "visible": true,
+            "dbType": 12,
+            "label": "controllerAs",
+            "sys_readonly": false,
+            "type": "string",
+            "mandatory": false,
+            "displayValue": "c",
+            "readonly": false,
+            "hint": "Identifier name for a reference to the controller in the directive's scope",
+            "name": "controller_as",
+            "attributes": {
+                "edge_encryption_enabled": "true"
+            },
+            "choice": 0,
+            "value": "c",
+            "max_length": 100,
+            "ed": {
+                "name": "controller_as"
+            }
+        }
+    }
+}

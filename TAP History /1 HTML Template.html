@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <!-- your widget template -->
+        Recent Stories
+        <div class="list-group-spacing">
+            <div class="list-group">
+                <a class='list-group-item' ng-repeat="history in c.data.history">
+                    <h4 class="list-group-item-heading" href="#">{{history.name}}</h4>
+                    <p class="list-group-item-text">{{history.description}}</p>
+                    <!-- <button class="button-new button-changes" role="button">Go to Story</button> -->
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

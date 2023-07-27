@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h3>Resources</h3>
+        <div class="list-group-spacing">
+            <div class="list-group">
+                <iframe class="list-group-item"
+                    src="https://advancesolution-my.sharepoint.com/personal/avery_h_advancesolutions_com/_layouts/15/embed.aspx?UniqueId=9eb2b84f-5b8d-4e9c-8a20-fabe5d041529&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=OneUpFileViewer&referrerScenario=EmbedDialog.Create"
+                    title="Change Managment 8-24-2022.mp4"></iframe>
+                <a ng-repeat="resource in c.data.resources" href="{{resource.link}}" target="_blank"
+                    class="list-group-item list-group-item-action">
+                    {{resource.title}}
+                    <br>
+                    {{resource.source}}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

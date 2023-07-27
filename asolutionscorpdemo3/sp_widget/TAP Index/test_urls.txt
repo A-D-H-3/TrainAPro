@@ -1,0 +1,3 @@
+https://asolutionscorpdemo3.service-now.com/$sp.do?id=sp-preview&sys_id=46bc0f1b1b8ee1101ddefc851a4bcbb1
+https://asolutionscorpdemo3.service-now.com/sp_config?id=tap_index
+https://asolutionscorpdemo3.service-now.com/sp?id=tap_index

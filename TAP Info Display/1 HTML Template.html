@@ -1,0 +1,36 @@
+<div>
+  <!-- your widget template -->
+  <section class="page">
+    <div class="wrapper">
+      <input type="checkbox" id="checkbox">
+      <label for="checkbox" class="open">
+        <div class="lines">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </label>
+
+      <!-- begin content -->
+      <section class="content" id="info">
+        <label for="checkbox" class="close" ng-click="openAnswer()"><span>Answer Story</span></label>
+        <!-- <label for="checkbox" class="go"><span>Close Me!</span></label> -->
+
+        <div class="logo" text="View Story">
+
+          <div class="logo__line"></div>
+          <div class="logo__line"></div>
+          <div class="logo__line"></div>
+        </div>
+        <h1>
+          <!--- Title of information displayed goes here --->
+          {{name}}
+        </h1>
+        <!--- Information displayed goes here --->
+        <div ng-bind-html="criteria"></div>
+      </section>
+      <!-- end content -->
+
+    </div>
+  </section>
+</div>

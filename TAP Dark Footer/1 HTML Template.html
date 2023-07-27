@@ -1,0 +1,22 @@
+<div class="sample-footer" role="contentinfo">
+  <h3 ng-if="c.data.darkTheme == 'true'">
+    Dark theme active:
+    <label class="toggle">
+      <input type="checkbox"
+             ng-model="c.data.darkTheme == 'true'" 
+             ng-click="toggleDarkTheme()">
+      <span class="slider"></span>
+    </label>
+  </h3>
+  <h3 ng-if="c.data.darkTheme == 'false'">
+    Light theme active:
+
+
+    <label class="toggle">
+      <input type="checkbox"
+             ng-model="c.data.darkTheme == 'true'" 
+             ng-click="toggleDarkTheme()">
+      <span class="slider"></span>
+    </label>
+  </h3>
+</div>

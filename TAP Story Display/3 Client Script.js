@@ -5,6 +5,7 @@ $scope.criteria = "Please select a Story to view the details";
 
 
   $rootScope.$on("selectedStory", function (event, args) {
+		$scope.name = args.name
 		$scope.criteria = args.criteria;
 		if(!args.criteria) {
 			$scope.criteria = "Please select a Story to view the details";

@@ -1,0 +1,11 @@
+<div>
+<!-- your widget template -->
+<div ng-bind-html="criteria"></div> 
+  <h1>Type your answer below:</h1>
+
+<form>
+  <label for="answer">Answer (Knowledge Transfer):</label>
+  <textarea ng-model="c.data.storyAnswer.kt" class="form-control" type="text" id="answer" name="answer"  ></textarea><br><br>
+  <input ng-click="submitAnswer()" class="btn btn-primary" type="submit" value="Submit">
+</form>
+</div>
