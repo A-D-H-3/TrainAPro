@@ -6,8 +6,8 @@
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
-    "name": "TAP Story Resources",
-    "sys_id": "bf7292fc1b9cfd101ddefc851a4bcb7b",
+    "name": "TAP Resource_modal",
+    "sys_id": "f24532c71bd4b5501ddefc851a4bcb31",
     "widget": {
         "template": {
             "sys_mandatory": false,
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "<div class=\"panel panel-default\">\n    <div class=\"panel-body\">\n        <h3>Resources</h3>\n        <div class=\"list-group-spacing\">\n            <div class=\"list-group\">\n                <!-- <iframe class=\"list-group-item\"\n                    src=\"{{c.data.resources[1].link}}\"\n                    title=\"Change Managment 8-24-2022.mp4\"></iframe> -->\n                <div ng-repeat=\"resource in c.data.resources\">\n                    <div ng-if=\"resource.source == 'URL Link'\">\n                        <a href=\"{{resource.link}}\" target=\"_blank\" class=\"list-group-item list-group-item-action\">\n                            {{resource.title}}\n                            <br>\n                            {{resource.source}}\n                        </a>\n                    </div>\n                    <div ng-if=\"resource.source == 'OneDrive'\">\n                        <a href=\"{{resource.link}}\" target=\"_blank\" class=\"list-group-item list-group-item-action\">\n                            {{resource.title}}\n                            <br>\n                            {{resource.source}}\n                        </a>\n                    </div>\n                </div>\n                <!--https://advancesolution-my.sharepoint.com/personal/bryan_c_advancesolutions_com/_layouts/15/stream.aspx?id=/personal/bryan%5Fc%5Fadvancesolutions%5Fcom/Documents/Trainings%207%2D11%2D2022/Week%2010%20Portal/9%2D12%2D2022%20Portal%20intro%2Emp4&ga=1-->\n            </div>\n        </div>\n    </div>\n</div>",
+            "displayValue": "<div>\n<!-- your widget template -->\n<div ng-bind-html=\"criteria\"></div> \n  <h4>Type your answer below:</h4>\n\n<form>\n  <label for=\"answer\">Answer (Knowledge Transfer):</label>\n  <textarea ng-model=\"c.data.storyAnswer.kt\" class=\"form-control\" type=\"text\" id=\"answer\" name=\"answer\" ></textarea><br><br>\n  <input ng-show=\"c.data.state != '3'\"ng-click=\"submitAnswer()\" class=\"btn btn-primary\" type=\"save\" value=\"Save\">\n  <input ng-show=\"c.data.state == '1'\" ng-click=\"inProgress()\"  class=\"btn btn-warning\" type=\"inProgress\" value=\"Move To In Progress\">\n  <input ng-show=\"c.data.state == '2'\" ng-click=\"completeStory()\" class=\"btn btn-danger\" type=\"completeStory\" value=\"Complete Story\">\n  <br>\n    </form>\n</div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "<div class=\"panel panel-default\">\n    <div class=\"panel-body\">\n        <h3>Resources</h3>\n        <div class=\"list-group-spacing\">\n            <div class=\"list-group\">\n                <!-- <iframe class=\"list-group-item\"\n                    src=\"{{c.data.resources[1].link}}\"\n                    title=\"Change Managment 8-24-2022.mp4\"></iframe> -->\n                <div ng-repeat=\"resource in c.data.resources\">\n                    <div ng-if=\"resource.source == 'URL Link'\">\n                        <a href=\"{{resource.link}}\" target=\"_blank\" class=\"list-group-item list-group-item-action\">\n                            {{resource.title}}\n                            <br>\n                            {{resource.source}}\n                        </a>\n                    </div>\n                    <div ng-if=\"resource.source == 'OneDrive'\">\n                        <a href=\"{{resource.link}}\" target=\"_blank\" class=\"list-group-item list-group-item-action\">\n                            {{resource.title}}\n                            <br>\n                            {{resource.source}}\n                        </a>\n                    </div>\n                </div>\n                <!--https://advancesolution-my.sharepoint.com/personal/bryan_c_advancesolutions_com/_layouts/15/stream.aspx?id=/personal/bryan%5Fc%5Fadvancesolutions%5Fcom/Documents/Trainings%207%2D11%2D2022/Week%2010%20Portal/9%2D12%2D2022%20Portal%20intro%2Emp4&ga=1-->\n            </div>\n        </div>\n    </div>\n</div>",
+            "value": "<div>\n<!-- your widget template -->\n<div ng-bind-html=\"criteria\"></div> \n  <h4>Type your answer below:</h4>\n\n<form>\n  <label for=\"answer\">Answer (Knowledge Transfer):</label>\n  <textarea ng-model=\"c.data.storyAnswer.kt\" class=\"form-control\" type=\"text\" id=\"answer\" name=\"answer\" ></textarea><br><br>\n  <input ng-show=\"c.data.state != '3'\"ng-click=\"submitAnswer()\" class=\"btn btn-primary\" type=\"save\" value=\"Save\">\n  <input ng-show=\"c.data.state == '1'\" ng-click=\"inProgress()\"  class=\"btn btn-warning\" type=\"inProgress\" value=\"Move To In Progress\">\n  <input ng-show=\"c.data.state == '2'\" ng-click=\"completeStory()\" class=\"btn btn-danger\" type=\"completeStory\" value=\"Complete Story\">\n  <br>\n    </form>\n</div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  data.resources = [];\n\n  //const userID = gs.getUserID();\n\n  resourceLoad();\n\n  function resourceLoad() {\n    var storyResourceGR = new GlideRecordSecure(\"x_adsr_tap_resource\");\n    //storyResourceGR.addQuery(\"resource_type\", \"OneDrive\");\n    storyResourceGR.query();\n    while (storyResourceGR.next()) {\n      var resourceOBJ = {\n        title: storyResourceGR.getDisplayValue(\"title\"),\n        source: storyResourceGR.getDisplayValue(\"resource_type\"),\n        link: storyResourceGR.getDisplayValue(\"link\"),\n        sys_id: storyResourceGR.getDisplayValue(\"sys_id\"),\n      };\n      data.resources.push(resourceOBJ);\n    }\n    console.log(data.resources);\n  }\n})();\n",
+            "displayValue": "(function() {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\n\tvar storyID = input.sys_id;\n\tvar userID = gs.getUserID();\n\tstoryAnswer(storyID);\n\n\tfunction storyAnswer(id) {\n\t\tvar storyGR = new GlideRecordSecure(\"x_adsr_tap_m2m_story_instance\");\t\n\t\tstoryGR.addQuery(\"x_adsr_tap_story\", id);\n\t\tstoryGR.addQuery(\"x_adsr_tap_m2m_trainee.sys_user\", userID);\n\t\tstoryGR.query();\n\t\tdata.storyAnswer = {};\n\t\twhile (storyGR.next()) {\n\t\t\tdata.state = storyGR.state.toString();\n\t\t\tvar storyObj = {\n\t\t\t\tname: storyGR.getElement(\"x_adsr_tap_story.name\").getDisplayValue(),\n\t\t\t\tcriteria: storyGR.getElement(\"x_adsr_tap_story.acceptance_criteria\").getDisplayValue(),\n\t\t\t\tstr_sys_id: storyGR.getDisplayValue(\"sys_id\"),\n\t\t\t\tkt: storyGR.getDisplayValue(\"knowledge_transfer\"),\n\t\t\t};\n\t\t\tdata.storyAnswer = storyObj;\n\t\t}\n\t\tif(input) {\n\t\t\tdata.state = input.state;\n\t\t}\n\t}\n\n\tif(input && input.action == \"submitAnswer\"){\n\t\tvar storyGR = new GlideRecordSecure(\"x_adsr_tap_m2m_story_instance\");\t\n\t\tstoryGR.addQuery(\"sys_id\", input.storyAnswer.str_sys_id);\n\t\tstoryGR.query();\n\t\twhile (storyGR.next()) {\n\t\tstoryGR.state = input.state;\n\t\tstoryGR.knowledge_transfer = input.storyAnswer.kt;\n\t\tstoryGR.update();\n\t\t}\n\t\tstoryAnswer(input.storyAnswer.str_sys_id);\n\t}\n\t\n\t\n\n})();",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function () {\n  /* populate the 'data' object */\n  /* e.g., data.table = $sp.getValue('table'); */\n\n  data.resources = [];\n\n  //const userID = gs.getUserID();\n\n  resourceLoad();\n\n  function resourceLoad() {\n    var storyResourceGR = new GlideRecordSecure(\"x_adsr_tap_resource\");\n    //storyResourceGR.addQuery(\"resource_type\", \"OneDrive\");\n    storyResourceGR.query();\n    while (storyResourceGR.next()) {\n      var resourceOBJ = {\n        title: storyResourceGR.getDisplayValue(\"title\"),\n        source: storyResourceGR.getDisplayValue(\"resource_type\"),\n        link: storyResourceGR.getDisplayValue(\"link\"),\n        sys_id: storyResourceGR.getDisplayValue(\"sys_id\"),\n      };\n      data.resources.push(resourceOBJ);\n    }\n    console.log(data.resources);\n  }\n})();\n",
+            "value": "(function() {\n\t/* populate the 'data' object */\n\t/* e.g., data.table = $sp.getValue('table'); */\n\n\tvar storyID = input.sys_id;\n\tvar userID = gs.getUserID();\n\tstoryAnswer(storyID);\n\n\tfunction storyAnswer(id) {\n\t\tvar storyGR = new GlideRecordSecure(\"x_adsr_tap_m2m_story_instance\");\t\n\t\tstoryGR.addQuery(\"x_adsr_tap_story\", id);\n\t\tstoryGR.addQuery(\"x_adsr_tap_m2m_trainee.sys_user\", userID);\n\t\tstoryGR.query();\n\t\tdata.storyAnswer = {};\n\t\twhile (storyGR.next()) {\n\t\t\tdata.state = storyGR.state.toString();\n\t\t\tvar storyObj = {\n\t\t\t\tname: storyGR.getElement(\"x_adsr_tap_story.name\").getDisplayValue(),\n\t\t\t\tcriteria: storyGR.getElement(\"x_adsr_tap_story.acceptance_criteria\").getDisplayValue(),\n\t\t\t\tstr_sys_id: storyGR.getDisplayValue(\"sys_id\"),\n\t\t\t\tkt: storyGR.getDisplayValue(\"knowledge_transfer\"),\n\t\t\t};\n\t\t\tdata.storyAnswer = storyObj;\n\t\t}\n\t\tif(input) {\n\t\t\tdata.state = input.state;\n\t\t}\n\t}\n\n\tif(input && input.action == \"submitAnswer\"){\n\t\tvar storyGR = new GlideRecordSecure(\"x_adsr_tap_m2m_story_instance\");\t\n\t\tstoryGR.addQuery(\"sys_id\", input.storyAnswer.str_sys_id);\n\t\tstoryGR.query();\n\t\twhile (storyGR.next()) {\n\t\tstoryGR.state = input.state;\n\t\tstoryGR.knowledge_transfer = input.storyAnswer.kt;\n\t\tstoryGR.update();\n\t\t}\n\t\tstoryAnswer(input.storyAnswer.str_sys_id);\n\t}\n\t\n\t\n\n})();",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($scope) {\n  /* widget controller */\n  var c = this;\n  $scope.embedLink = c.data.resources[1].link;\n  console.log(\n    \"******** - AH here is your console log - ******** \" + $scope.embedLink\n  );\n  console.log(\n    \"******** - AH here is your console log - ******** \" +\n      typeof c.data.resources[2].source\n  );\n};\n",
+            "displayValue": "api.controller=function($sce, $scope, spUtil, $window) {\n  /* widget controller */\n  var c = this;\n\t\n $scope.criteria = $sce.trustAsHtml(c.data.storyAnswer.criteria);\n\t\n\t  $scope.submitAnswer = function() {\n    c.data.action = \"submitAnswer\";\n    c.server.update().then(function(){\n      $scope.$parent.$parent.$dismiss();\n      c.data.action = undefined;\n\n    });\n  }\t\n\t\n\t$scope.inProgress = function() {\n\t\tc.data.state = 2;\n    c.data.action = \"submitAnswer\";\n    c.server.update().then(function(){\n      $scope.$parent.$parent.$dismiss();\n      c.data.action = undefined;\n\n    });\n  }\t\n\t\n\t$scope.completeStory = function() {\n\t\tc.data.state = 3;\n    c.data.action = \"submitAnswer\";\n    c.server.update().then(function(){\n      $scope.$parent.$parent.$dismiss();\n      c.data.action = undefined;\n\n    });\n  }\t\n};",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($scope) {\n  /* widget controller */\n  var c = this;\n  $scope.embedLink = c.data.resources[1].link;\n  console.log(\n    \"******** - AH here is your console log - ******** \" + $scope.embedLink\n  );\n  console.log(\n    \"******** - AH here is your console log - ******** \" +\n      typeof c.data.resources[2].source\n  );\n};\n",
+            "value": "api.controller=function($sce, $scope, spUtil, $window) {\n  /* widget controller */\n  var c = this;\n\t\n $scope.criteria = $sce.trustAsHtml(c.data.storyAnswer.criteria);\n\t\n\t  $scope.submitAnswer = function() {\n    c.data.action = \"submitAnswer\";\n    c.server.update().then(function(){\n      $scope.$parent.$parent.$dismiss();\n      c.data.action = undefined;\n\n    });\n  }\t\n\t\n\t$scope.inProgress = function() {\n\t\tc.data.state = 2;\n    c.data.action = \"submitAnswer\";\n    c.server.update().then(function(){\n      $scope.$parent.$parent.$dismiss();\n      c.data.action = undefined;\n\n    });\n  }\t\n\t\n\t$scope.completeStory = function() {\n\t\tc.data.state = 3;\n    c.data.action = \"submitAnswer\";\n    c.server.update().then(function(){\n      $scope.$parent.$parent.$dismiss();\n      c.data.action = undefined;\n\n    });\n  }\t\n};",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"
@@ -307,13 +307,13 @@
             "sys_readonly": false,
             "type": "translated_field",
             "mandatory": true,
-            "displayValue": "TAP Story Resources",
+            "displayValue": "TAP Resource_modal",
             "readonly": false,
             "hint": "",
             "name": "name",
             "attributes": {},
             "choice": 0,
-            "value": "TAP Story Resources",
+            "value": "TAP Resource_modal",
             "max_length": 40,
             "ed": {
                 "name": "name"
@@ -362,7 +362,7 @@
             "sys_readonly": false,
             "type": "string",
             "mandatory": false,
-            "displayValue": "tap_story_resources",
+            "displayValue": "tap_resource_modal",
             "readonly": false,
             "hint": "Identifier for $sp.embedWidget()",
             "name": "id",
@@ -370,7 +370,7 @@
                 "edge_encryption_enabled": "true"
             },
             "choice": 0,
-            "value": "tap_story_resources",
+            "value": "tap_resource_modal",
             "max_length": 40,
             "ed": {
                 "name": "id"

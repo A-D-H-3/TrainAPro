@@ -3,15 +3,26 @@
         <h3>Resources</h3>
         <div class="list-group-spacing">
             <div class="list-group">
-                <iframe class="list-group-item"
-                    src="https://advancesolution-my.sharepoint.com/personal/avery_h_advancesolutions_com/_layouts/15/embed.aspx?UniqueId=9eb2b84f-5b8d-4e9c-8a20-fabe5d041529&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=OneUpFileViewer&referrerScenario=EmbedDialog.Create"
-                    title="Change Managment 8-24-2022.mp4"></iframe>
-                <a ng-repeat="resource in c.data.resources" href="{{resource.link}}" target="_blank"
-                    class="list-group-item list-group-item-action">
-                    {{resource.title}}
-                    <br>
-                    {{resource.source}}
-                </a>
+                <!-- <iframe class="list-group-item"
+                    src="{{c.data.resources[1].link}}"
+                    title="Change Managment 8-24-2022.mp4"></iframe> -->
+                <div ng-repeat="resource in c.data.resources">
+                    <div ng-if="resource.source == 'URL Link'">
+                        <a href="{{resource.link}}" target="_blank" class="list-group-item list-group-item-action">
+                            {{resource.title}}
+                            <br>
+                            {{resource.source}}
+                        </a>
+                    </div>
+                    <div ng-if="resource.source == 'OneDrive'">
+                        <a href="{{resource.link}}" target="_blank" class="list-group-item list-group-item-action">
+                            {{resource.title}}
+                            <br>
+                            {{resource.source}}
+                        </a>
+                    </div>
+                </div>
+                <!--https://advancesolution-my.sharepoint.com/personal/bryan_c_advancesolutions_com/_layouts/15/stream.aspx?id=/personal/bryan%5Fc%5Fadvancesolutions%5Fcom/Documents/Trainings%207%2D11%2D2022/Week%2010%20Portal/9%2D12%2D2022%20Portal%20intro%2Emp4&ga=1-->
             </div>
         </div>
     </div>
