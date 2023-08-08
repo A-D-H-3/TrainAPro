@@ -1,35 +1,15 @@
-api.controller=function($sce, $scope, spUtil, $window) {
+api.controller = function ($rootScope, $scope) {
   /* widget controller */
   var c = this;
-	
- $scope.criteria = $sce.trustAsHtml(c.data.storyAnswer.criteria);
-	
-	  $scope.submitAnswer = function() {
-    c.data.action = "submitAnswer";
-    c.server.update().then(function(){
-      $scope.$parent.$parent.$dismiss();
-      c.data.action = undefined;
 
-    });
-  }	
-	
-	$scope.inProgress = function() {
-		c.data.state = 2;
-    c.data.action = "submitAnswer";
-    c.server.update().then(function(){
-      $scope.$parent.$parent.$dismiss();
-      c.data.action = undefined;
+  $rootScope.$on("selectedResource", function (event, args) {
+    $scope.title = args.resTitle;
+    $scope.source = args.resSource;
+    $scope.link = args.resLink;
+    $scope.sysID = args.resSysID;
+    console.log("******* - AH You are here - *******" + " " + args.resTitle);
+    console.log(args.resTitle);
+  });
 
-    });
-  }	
-	
-	$scope.completeStory = function() {
-		c.data.state = 3;
-    c.data.action = "submitAnswer";
-    c.server.update().then(function(){
-      $scope.$parent.$parent.$dismiss();
-      c.data.action = undefined;
-
-    });
-  }	
+  console.log($scope.title);
 };

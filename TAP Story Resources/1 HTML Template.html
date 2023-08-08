@@ -3,9 +3,7 @@
         <h3>Resources</h3>
         <div class="list-group-spacing">
             <div class="list-group">
-                <!-- <iframe class="list-group-item"
-                    src="{{c.data.resources[1].link}}"
-                    title="Change Managment 8-24-2022.mp4"></iframe> -->
+
                 <div ng-repeat="resource in c.data.resources">
                     <div ng-if="resource.source == 'URL Link'">
                         <a href="{{resource.link}}" target="_blank" class="list-group-item list-group-item-action">
@@ -15,10 +13,13 @@
                         </a>
                     </div>
                     <div ng-if="resource.source == 'OneDrive'">
-                        <a href="{{resource.link}}" target="_blank" class="list-group-item list-group-item-action">
+                        <a ng-click="selectedResource()" class="list-group-item list-group-item-action">
                             {{resource.title}}
                             <br>
                             {{resource.source}}
+                            <br>
+                            <button ng-click="openResource(resource.sys_id, resource.link, resource.title)"
+                                class="btn btn-primary" type="submit"> View Video</button>
                         </a>
                     </div>
                 </div>

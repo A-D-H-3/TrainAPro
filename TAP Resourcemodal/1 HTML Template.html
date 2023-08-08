@@ -1,14 +1,7 @@
 <div>
-<!-- your widget template -->
-<div ng-bind-html="criteria"></div> 
-  <h4>Type your answer below:</h4>
+  <!-- your widget template -->
+  <h4>{{title}}</h4>
 
-<form>
-  <label for="answer">Answer (Knowledge Transfer):</label>
-  <textarea ng-model="c.data.storyAnswer.kt" class="form-control" type="text" id="answer" name="answer" ></textarea><br><br>
-  <input ng-show="c.data.state != '3'"ng-click="submitAnswer()" class="btn btn-primary" type="save" value="Save">
-  <input ng-show="c.data.state == '1'" ng-click="inProgress()"  class="btn btn-warning" type="inProgress" value="Move To In Progress">
-  <input ng-show="c.data.state == '2'" ng-click="completeStory()" class="btn btn-danger" type="completeStory" value="Complete Story">
-  <br>
-    </form>
+  <iframe class="list-group-item" src="{{c.data.resources[1].link}}" title="Change Managment 8-24-2022.mp4"></iframe>
+
 </div>

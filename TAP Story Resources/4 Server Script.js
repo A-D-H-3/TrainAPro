@@ -21,6 +21,5 @@
       };
       data.resources.push(resourceOBJ);
     }
-    console.log(data.resources);
   }
 })();

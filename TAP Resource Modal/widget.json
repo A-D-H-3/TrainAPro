@@ -2,11 +2,11 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "5df8e877db1cb9507758240a139619cd6989a6fd036eeb56d4abc310f3ca1ab31dc53e89"
+        "g_ck": "1b2db8091b6431101ddefc851a4bcbfe3d614300516106efee2f7768551894ea22ab8c3f"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
-    "name": "TAP Resource_modal",
+    "name": "TAP Resource Modal",
     "sys_id": "f24532c71bd4b5501ddefc851a4bcb31",
     "widget": {
         "template": {
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "<div>\n  <!-- your widget template -->\n  <h4>{{title}}</h4>\n\n  <iframe class=\"list-group-item\" src=\"{{c.data.resources[1].link}}\" title=\"Change Managment 8-24-2022.mp4\"></iframe>\n\n</div>",
+            "displayValue": "<div class=\"modal-class\">\n  <!-- your widget template -->\n  <h4>{{c.data.id}}</h4>\n  <h4>{{c.data.title}}</h4>\n  <iframe class=\"list-group-item iframe-class\" ng-src=\"{{resourceLink}}\" title=\"Change Managment 8-24-2022.mp4\"></iframe>\n\n</div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "<div>\n  <!-- your widget template -->\n  <h4>{{title}}</h4>\n\n  <iframe class=\"list-group-item\" src=\"{{c.data.resources[1].link}}\" title=\"Change Managment 8-24-2022.mp4\"></iframe>\n\n</div>",
+            "value": "<div class=\"modal-class\">\n  <!-- your widget template -->\n  <h4>{{c.data.id}}</h4>\n  <h4>{{c.data.title}}</h4>\n  <iframe class=\"list-group-item iframe-class\" ng-src=\"{{resourceLink}}\" title=\"Change Managment 8-24-2022.mp4\"></iframe>\n\n</div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -37,13 +37,13 @@
             "sys_readonly": false,
             "type": "css",
             "mandatory": false,
-            "displayValue": "",
+            "displayValue": ".iframe-class {\n  width:100%;\n   height: 900px;\n}\n\n.modal-class {\n  height: 1000px;\n}",
             "readonly": false,
             "hint": "",
             "name": "css",
             "attributes": {},
             "choice": 0,
-            "value": "",
+            "value": ".iframe-class {\n  width:100%;\n   height: 900px;\n}\n\n.modal-class {\n  height: 1000px;\n}",
             "max_length": 8000,
             "ed": {
                 "name": "css"
@@ -165,13 +165,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function () {\n\n})();\n",
+            "displayValue": "(function () {\n  data.id = input.sysID;\n  data.title = input.title;\n  data.link = input.link;\n\t\n\t//https://advancesolution-my.sharepoint.com/:v:/g/personal/bryan_c_advancesolutions_com/EZenFHb_WX5PsMQkaWpIBKYBMlMSG5l1SKc9sY5zkakbpA?e=Y7TfOO\"\n})();\n",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function () {\n\n})();\n",
+            "value": "(function () {\n  data.id = input.sysID;\n  data.title = input.title;\n  data.link = input.link;\n\t\n\t//https://advancesolution-my.sharepoint.com/:v:/g/personal/bryan_c_advancesolutions_com/EZenFHb_WX5PsMQkaWpIBKYBMlMSG5l1SKc9sY5zkakbpA?e=Y7TfOO\"\n})();\n",
             "max_length": 65000,
             "ed": {
                 "name": "script"
@@ -260,7 +260,7 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedResource\", function (event, args) {\n    $scope.title = args.title;\n    $scope.source = args.source;\n    $scope.link = args.link;\n    $scope.sysID = args.res_sys_id;\n    console.log(args.title);\n  });\n\n\n};\n",
+            "displayValue": "api.controller = function ($rootScope, $scope, $sce) {\n  /* widget controller */\n  var c = this;\n\t\n\t$scope.resourceLink = $sce.trustAsResourceUrl(c.data.link);\n\n\t\n  console.log(c.data);\n};\n",
             "readonly": false,
             "hint": "",
             "name": "client_script",
@@ -268,7 +268,7 @@
                 "client_script": "true"
             },
             "choice": 0,
-            "value": "api.controller = function ($rootScope, $scope) {\n  /* widget controller */\n  var c = this;\n\n  $rootScope.$on(\"selectedResource\", function (event, args) {\n    $scope.title = args.title;\n    $scope.source = args.source;\n    $scope.link = args.link;\n    $scope.sysID = args.res_sys_id;\n    console.log(args.title);\n  });\n\n\n};\n",
+            "value": "api.controller = function ($rootScope, $scope, $sce) {\n  /* widget controller */\n  var c = this;\n\t\n\t$scope.resourceLink = $sce.trustAsResourceUrl(c.data.link);\n\n\t\n  console.log(c.data);\n};\n",
             "max_length": 8000,
             "ed": {
                 "name": "client_script"
@@ -307,13 +307,13 @@
             "sys_readonly": false,
             "type": "translated_field",
             "mandatory": true,
-            "displayValue": "TAP Resource_modal",
+            "displayValue": "TAP Resource Modal",
             "readonly": false,
             "hint": "",
             "name": "name",
             "attributes": {},
             "choice": 0,
-            "value": "TAP Resource_modal",
+            "value": "TAP Resource Modal",
             "max_length": 40,
             "ed": {
                 "name": "name"
