@@ -25,7 +25,6 @@
 		} else {
 			while (userThemeGR.next()) {
 				if(!loaded){
-					console.log(userThemeGR.dark_mode + "bryan you are here");
 					data.darkTheme = userThemeGR.dark_mode.toString();
 				} else {
 					userThemeGR.dark_mode = input.darkTheme;

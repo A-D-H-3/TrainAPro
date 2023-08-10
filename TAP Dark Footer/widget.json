@@ -2,7 +2,7 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "b4ac11a01b50fd101ddefc851a4bcb720282ae936a3b831d5e3998be3714f4e6f0a7a4ca"
+        "g_ck": "bd176fe11b24b1101ddefc851a4bcb5867e13d8c9f9f2f9a0990a8c7542569ac0af1c559"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
@@ -17,13 +17,13 @@
             "sys_readonly": false,
             "type": "html_template",
             "mandatory": false,
-            "displayValue": "<div class=\"sample-footer\" role=\"contentinfo\">\n  <h3 ng-if=\"c.data.darkTheme == 'true'\">\n    Dark theme active:\n    <label class=\"toggle\">\n      <input type=\"checkbox\"\n             ng-model=\"c.data.darkTheme == 'true'\" \n             ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n  <h3 ng-if=\"c.data.darkTheme == 'false'\">\n    Light theme active:\n\n\n    <label class=\"toggle\">\n      <input type=\"checkbox\"\n             ng-model=\"c.data.darkTheme == 'true'\" \n             ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n</div>",
+            "displayValue": "<!-- <div class=\"sample-footer\" role=\"contentinfo\">\n  <h3 ng-if=\"c.data.darkTheme == 'true'\">\n    Dark theme active:\n    <label class=\"toggle\">\n      <input type=\"checkbox\" ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n  <h3 ng-if=\"c.data.darkTheme == 'false'\">\n    Light theme active:\n    <label class=\"toggle\">\n      <input type=\"checkbox\" ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n</div> -->\n\n<div class=\"sample-footer\" role=\"contentinfo\">\n  <h3 ng-if=\"c.data.darkTheme == 'true'\">\n    Dark theme active:\n    <label class=\"toggle\">\n      <input type=\"checkbox\" ng-model=\"c.data.darkTheme == 'true'\" ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n  <h3 ng-if=\"c.data.darkTheme == 'false'\">\n    Light theme active:\n\n\n    <label class=\"toggle\">\n      <input type=\"checkbox\" ng-model=\"c.data.darkTheme == 'true'\" ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n</div>",
             "readonly": false,
             "hint": "",
             "name": "template",
             "attributes": {},
             "choice": 0,
-            "value": "<div class=\"sample-footer\" role=\"contentinfo\">\n  <h3 ng-if=\"c.data.darkTheme == 'true'\">\n    Dark theme active:\n    <label class=\"toggle\">\n      <input type=\"checkbox\"\n             ng-model=\"c.data.darkTheme == 'true'\" \n             ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n  <h3 ng-if=\"c.data.darkTheme == 'false'\">\n    Light theme active:\n\n\n    <label class=\"toggle\">\n      <input type=\"checkbox\"\n             ng-model=\"c.data.darkTheme == 'true'\" \n             ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n</div>",
+            "value": "<!-- <div class=\"sample-footer\" role=\"contentinfo\">\n  <h3 ng-if=\"c.data.darkTheme == 'true'\">\n    Dark theme active:\n    <label class=\"toggle\">\n      <input type=\"checkbox\" ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n  <h3 ng-if=\"c.data.darkTheme == 'false'\">\n    Light theme active:\n    <label class=\"toggle\">\n      <input type=\"checkbox\" ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n</div> -->\n\n<div class=\"sample-footer\" role=\"contentinfo\">\n  <h3 ng-if=\"c.data.darkTheme == 'true'\">\n    Dark theme active:\n    <label class=\"toggle\">\n      <input type=\"checkbox\" ng-model=\"c.data.darkTheme == 'true'\" ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n  <h3 ng-if=\"c.data.darkTheme == 'false'\">\n    Light theme active:\n\n\n    <label class=\"toggle\">\n      <input type=\"checkbox\" ng-model=\"c.data.darkTheme == 'true'\" ng-click=\"toggleDarkTheme()\">\n      <span class=\"slider\"></span>\n    </label>\n  </h3>\n</div>",
             "max_length": 65000,
             "ed": {
                 "name": "template"
@@ -193,7 +193,6 @@
             "hint": "Application containing this record",
             "name": "sys_scope",
             "attributes": {
-                "encode_utf8": "false",
                 "list_force_default": "true",
                 "readonly_clickthrough": "true",
                 "ignore_filter_on_new": "true"
@@ -240,13 +239,13 @@
             "sys_readonly": false,
             "type": "script",
             "mandatory": false,
-            "displayValue": "(function() {\n\tdata.time = new GlideDateTime().getDisplayValue();\n\n\tvar userID = gs.getUserID();\n\n\tif(!input){\n\t\tonLoad(false)\n\t}\n\n\tif(input && input.action == \"toggleDarkTheme\"){\n\n\t\tonLoad(true);\n\t}\n\n\tfunction onLoad(loaded){\n\n\t\tvar userThemeGR = new GlideRecordSecure(\"x_adsr_tap_dark_theme\");\t\n\t\tuserThemeGR.addQuery(\"user\", userID);\n\t\tuserThemeGR.query();\n\t\tif(!userThemeGR.hasNext()){\n\t\t\tuserThemeGR.initialize();\n\t\t\tuserThemeGR.dark_mode = data.darkTheme;\n\t\t\tuserThemeGR.user = userID;\n\t\t\tuserThemeGR.insert()\n\t\t} else {\n\t\t\twhile (userThemeGR.next()) {\n\t\t\t\tif(!loaded){\n\t\t\t\t\tconsole.log(userThemeGR.dark_mode + \"bryan you are here\");\n\t\t\t\t\tdata.darkTheme = userThemeGR.dark_mode.toString();\n\t\t\t\t} else {\n\t\t\t\t\tuserThemeGR.dark_mode = input.darkTheme;\n\t\t\t\t\tuserThemeGR.update();\n\t\t\t\t\tdata.darkTheme = input.darkTheme;\n\t\t\t\t}\n\n\t\t\t}\n\n\t\t}\n\n\t}\n\t\tfunction backgroundColor (options) {\n    options.styles.footer = \"background-color: #1E0A25\";\n    return options;\n}\n\n})();",
+            "displayValue": "(function() {\n\tdata.time = new GlideDateTime().getDisplayValue();\n\n\tvar userID = gs.getUserID();\n\n\tif(!input){\n\t\tonLoad(false)\n\t}\n\n\tif(input && input.action == \"toggleDarkTheme\"){\n\n\t\tonLoad(true);\n\t}\n\n\tfunction onLoad(loaded){\n\n\t\tvar userThemeGR = new GlideRecordSecure(\"x_adsr_tap_dark_theme\");\t\n\t\tuserThemeGR.addQuery(\"user\", userID);\n\t\tuserThemeGR.query();\n\t\tif(!userThemeGR.hasNext()){\n\t\t\tuserThemeGR.initialize();\n\t\t\tuserThemeGR.dark_mode = data.darkTheme;\n\t\t\tuserThemeGR.user = userID;\n\t\t\tuserThemeGR.insert()\n\t\t} else {\n\t\t\twhile (userThemeGR.next()) {\n\t\t\t\tif(!loaded){\n\t\t\t\t\tdata.darkTheme = userThemeGR.dark_mode.toString();\n\t\t\t\t} else {\n\t\t\t\t\tuserThemeGR.dark_mode = input.darkTheme;\n\t\t\t\t\tuserThemeGR.update();\n\t\t\t\t\tdata.darkTheme = input.darkTheme;\n\t\t\t\t}\n\n\t\t\t}\n\n\t\t}\n\n\t}\n\t\tfunction backgroundColor (options) {\n    options.styles.footer = \"background-color: #1E0A25\";\n    return options;\n}\n\n})();",
             "readonly": false,
             "hint": "",
             "name": "script",
             "attributes": {},
             "choice": 0,
-            "value": "(function() {\n\tdata.time = new GlideDateTime().getDisplayValue();\n\n\tvar userID = gs.getUserID();\n\n\tif(!input){\n\t\tonLoad(false)\n\t}\n\n\tif(input && input.action == \"toggleDarkTheme\"){\n\n\t\tonLoad(true);\n\t}\n\n\tfunction onLoad(loaded){\n\n\t\tvar userThemeGR = new GlideRecordSecure(\"x_adsr_tap_dark_theme\");\t\n\t\tuserThemeGR.addQuery(\"user\", userID);\n\t\tuserThemeGR.query();\n\t\tif(!userThemeGR.hasNext()){\n\t\t\tuserThemeGR.initialize();\n\t\t\tuserThemeGR.dark_mode = data.darkTheme;\n\t\t\tuserThemeGR.user = userID;\n\t\t\tuserThemeGR.insert()\n\t\t} else {\n\t\t\twhile (userThemeGR.next()) {\n\t\t\t\tif(!loaded){\n\t\t\t\t\tconsole.log(userThemeGR.dark_mode + \"bryan you are here\");\n\t\t\t\t\tdata.darkTheme = userThemeGR.dark_mode.toString();\n\t\t\t\t} else {\n\t\t\t\t\tuserThemeGR.dark_mode = input.darkTheme;\n\t\t\t\t\tuserThemeGR.update();\n\t\t\t\t\tdata.darkTheme = input.darkTheme;\n\t\t\t\t}\n\n\t\t\t}\n\n\t\t}\n\n\t}\n\t\tfunction backgroundColor (options) {\n    options.styles.footer = \"background-color: #1E0A25\";\n    return options;\n}\n\n})();",
+            "value": "(function() {\n\tdata.time = new GlideDateTime().getDisplayValue();\n\n\tvar userID = gs.getUserID();\n\n\tif(!input){\n\t\tonLoad(false)\n\t}\n\n\tif(input && input.action == \"toggleDarkTheme\"){\n\n\t\tonLoad(true);\n\t}\n\n\tfunction onLoad(loaded){\n\n\t\tvar userThemeGR = new GlideRecordSecure(\"x_adsr_tap_dark_theme\");\t\n\t\tuserThemeGR.addQuery(\"user\", userID);\n\t\tuserThemeGR.query();\n\t\tif(!userThemeGR.hasNext()){\n\t\t\tuserThemeGR.initialize();\n\t\t\tuserThemeGR.dark_mode = data.darkTheme;\n\t\t\tuserThemeGR.user = userID;\n\t\t\tuserThemeGR.insert()\n\t\t} else {\n\t\t\twhile (userThemeGR.next()) {\n\t\t\t\tif(!loaded){\n\t\t\t\t\tdata.darkTheme = userThemeGR.dark_mode.toString();\n\t\t\t\t} else {\n\t\t\t\t\tuserThemeGR.dark_mode = input.darkTheme;\n\t\t\t\t\tuserThemeGR.update();\n\t\t\t\t\tdata.darkTheme = input.darkTheme;\n\t\t\t\t}\n\n\t\t\t}\n\n\t\t}\n\n\t}\n\t\tfunction backgroundColor (options) {\n    options.styles.footer = \"background-color: #1E0A25\";\n    return options;\n}\n\n})();",
             "max_length": 65000,
             "ed": {
                 "name": "script"

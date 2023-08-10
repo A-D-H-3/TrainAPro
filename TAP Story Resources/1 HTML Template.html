@@ -6,11 +6,12 @@
 
                 <div ng-repeat="resource in c.data.resources">
                     <div ng-if="resource.source == 'URL Link'">
-                        <a href="{{resource.link}}" target="_blank" class="list-group-item list-group-item-action">
+                        <button href="{{resource.link}}" target="_blank" class="list-group-item list-group-item-action">
                             {{resource.title}}
                             <br>
                             {{resource.source}}
-                        </a>
+                            </a>
+                        </button>
                     </div>
                     <div ng-if="resource.source == 'OneDrive'">
                         <a ng-click="selectedResource()" class="list-group-item list-group-item-action">

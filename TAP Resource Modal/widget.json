@@ -2,7 +2,7 @@
     "instance": {
         "name": "asolutionscorpdemo3",
         "url": "https://asolutionscorpdemo3.service-now.com",
-        "g_ck": "1b2db8091b6431101ddefc851a4bcbfe3d614300516106efee2f7768551894ea22ab8c3f"
+        "g_ck": "bd176fe11b24b1101ddefc851a4bcb5867e13d8c9f9f2f9a0990a8c7542569ac0af1c559"
     },
     "action": "saveWidget",
     "tableName": "sp_widget",
