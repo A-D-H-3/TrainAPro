@@ -1,0 +1,39 @@
+<!-- <div class="sample-footer" role="contentinfo">
+  <h3 ng-if="c.data.darkTheme == 'true'">
+    Dark theme active:
+    <label class="toggle">
+      <input type="checkbox" ng-click="toggleDarkTheme()">
+      <span class="slider"></span>
+    </label>
+  </h3>
+  <h3 ng-if="c.data.darkTheme == 'false'">
+    Light theme active:
+    <label class="toggle">
+      <input type="checkbox" ng-click="toggleDarkTheme()">
+      <span class="slider"></span>
+    </label>
+  </h3>
+</div> -->
+
+<div class="theme-container shadow-dark">
+  <img id="theme-icon" src="https://www.uplooder.net/img/image/2/addf703a24a12d030968858e0879b11e/moon.svg" alt="ERR">
+</div>
+
+<div class="sample-footer" role="contentinfo">
+  <h3 ng-if="c.data.darkTheme == 'true'">
+    Dark theme active:
+    <label class="toggle">
+      <input type="checkbox" ng-model="c.data.darkTheme == 'true'" ng-click="toggleDarkTheme()">
+      <span class="slider"></span>
+    </label>
+  </h3>
+  <h3 ng-if="c.data.darkTheme == 'false'">
+    Light theme active:
+
+
+    <label class="toggle">
+      <input type="checkbox" ng-model="c.data.darkTheme == 'true'" ng-click="toggleDarkTheme()">
+      <span class="slider"></span>
+    </label>
+  </h3>
+</div>
